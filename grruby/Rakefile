@@ -16,4 +16,7 @@ Hoe.spec "grruby" do
 
 end
 
+
+Rake::Task[:test].prerequisites << :compile
+
 # vim: syntax=ruby

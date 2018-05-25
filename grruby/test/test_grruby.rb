@@ -1,9 +1,8 @@
-gem "minitest"
-require "minitest/autorun"
+require"test/unit"
 require "grruby"
 
-class TestGrruby < Minitest::Test
+class TestGRruby < Test::Unit::TestCase
   def test_sanity
-    flunk "write tests or I will kneecap you"
+    assert_equal 1,1
   end
 end
