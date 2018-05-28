@@ -94,6 +94,16 @@ static VALUE updatews(){
 	return Qtrue;
 }
 
+static VALUE text(VALUE self,VALUE x, VALUE y, VALUE string){
+
+	double xc=NUM2DBL(x);
+	double yc=NUM2DBL(y);
+	char *stringc=StringValueCStr(string);
+	gr_text(xc,yc,stringc);
+	return Qtrue;
+}
+
+
 void Init_grruby(){
 	VALUE mGRruby=rb_define_module("GRruby");
 	rb_define_singleton_method(mGRruby,"setviewport",setviewport,4);
@@ -106,4 +116,5 @@ void Init_grruby(){
 	rb_define_singleton_method(mGRruby,"settextfontprec",settextfontprec,2);
 	rb_define_singleton_method(mGRruby,"axes",axes,7);
 	rb_define_singleton_method(mGRruby,"updatews",updatews,0);
+	rb_define_singleton_method(mGRruby,"text",text,3);
 }
