@@ -84,6 +84,38 @@ static VALUE inqcolormap(VALUE,VALUE);
 static VALUE colorbar(VALUE);
 static VALUE inqcolor(VALUE,VALUE,VALUE);
 static VALUE inqcolorfromrgb(VALUE,VALUE,VALUE,VALUE);
+static VALUE hsvtorgb(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE tick(VALUE,VALUE,VALUE);
+static VALUE validaterange(VALUE,VALUE,VALUE);
+static VALUE adjustlimits(VALUE,VALUE,VALUE);
+static VALUE adjustrange(VALUE,VALUE,VALUE);
+static VALUE beginprint(VALUE,VALUE);
+static VALUE beginprintext(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE endprint(VALUE);
+static VALUE ndctowc(VALUE,VALUE,VALUE);
+static VALUE wctondc(VALUE,VALUE,VALUE);
+static VALUE wc3towc(VALUE,VALUE,VALUE,VALUE);
+static VALUE drawrect(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE fillrect(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE drawarc(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE fillarc(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE drawpath(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE setarrowstyle(VALUE,VALUE);
+static VALUE setarrowsize(VALUE,VALUE);
+static VALUE drawarrow(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE readimage(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE drawimage(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE importgraphics(VALUE,VALUE);
+static VALUE setshadow(VALUE,VALUE,VALUE,VALUE);
+static VALUE settransparency(VALUE,VALUE);
+static VALUE setcoordxform(VALUE,VALUE);
+static VALUE begingraphics(VALUE,VALUE);
+static VALUE endgraphics(VALUE);
+static VALUE getgraphics(VALUE);
+static VALUE drawgraphics(VALUE,VALUE);
+static VALUE mathtex(VALUE,VALUE,VALUE,VALUE);
+
+
 
 
 void Init_grruby(){
@@ -170,6 +202,36 @@ void Init_grruby(){
 	rb_define_singleton_method(mGRruby,"colorbar",colorbar,0);
 	rb_define_singleton_method(mGRruby,"inqcolor",inqcolor,2);
 	rb_define_singleton_method(mGRruby,"inqcolorfromrgb",inqcolorfromrgb,3);
+	rb_define_singleton_method(mGRruby,"hsvtorgb",hsvtorgb,6);
+	rb_define_singleton_method(mGRruby,"tick",tick,2);
+	rb_define_singleton_method(mGRruby,"validaterange",validaterange,2);
+	rb_define_singleton_method(mGRruby,"adjustlimits",adjustlimits,2);
+	rb_define_singleton_method(mGRruby,"adjustrange",adjustrange,2);
+	rb_define_singleton_method(mGRruby,"beginprint",beginprint,1);
+	rb_define_singleton_method(mGRruby,"beginprintext",beginprintext,4);
+	rb_define_singleton_method(mGRruby,"endprint",endprint,0);
+	rb_define_singleton_method(mGRruby,"ndctowc",ndctowc,2);
+	rb_define_singleton_method(mGRruby,"wctondc",wctondc,2);
+	rb_define_singleton_method(mGRruby,"wc3towc",wc3towc,3);
+	rb_define_singleton_method(mGRruby,"drawrect",drawrect,4);
+	rb_define_singleton_method(mGRruby,"fillrect",fillrect,4);
+	rb_define_singleton_method(mGRruby,"drawarc",drawarc,6);
+	rb_define_singleton_method(mGRruby,"fillarc",fillarc,6);
+	//rb_define_singleton_method(mGRruby,"drawpath",drawpath,4);
+	rb_define_singleton_method(mGRruby,"setarrowstyle",setarrowstyle,1);
+	rb_define_singleton_method(mGRruby,"setarrowsize",setarrowsize,1);
+	rb_define_singleton_method(mGRruby,"drawarrow",drawarrow,4);
+	//rb_define_singleton_method(mGRruby,"readimage",readimage,4);
+	rb_define_singleton_method(mGRruby,"drawimage",drawimage,8);
+	rb_define_singleton_method(mGRruby,"importgraphics",importgraphics,1);
+	rb_define_singleton_method(mGRruby,"setshadow",setshadow,3);
+	rb_define_singleton_method(mGRruby,"settransparency",settransparency,1);
+	//rb_define_singleton_method(mGRruby,"setcoordxform",setcoordxform,1);
+	rb_define_singleton_method(mGRruby,"begingraphics",begingraphics,1);
+	rb_define_singleton_method(mGRruby,"endgraphics",endgraphics,0);
+	rb_define_singleton_method(mGRruby,"getgraphics",getgraphics,0);
+	rb_define_singleton_method(mGRruby,"drawgraphics",drawgraphics,1);
+	rb_define_singleton_method(mGRruby,"mathtex",mathtex,3);
 	
 }
 
@@ -614,8 +676,7 @@ static VALUE setspace(VALUE self, VALUE zmin, VALUE zmax,VALUE rotation, VALUE t
 	double zmaxc = NUM2DBL(zmax);
 	int rotationc = NUM2INT(rotation);
 	int tiltc = NUM2INT(tilt);
-	gr_setspace(zminc,zmaxc,rotationc,tiltc);
-	return Qtrue;
+	return INT2NUM(gr_setspace(zminc,zmaxc,rotationc,tiltc));
 }
 
 static VALUE inqspace(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d){
@@ -629,8 +690,7 @@ static VALUE inqspace(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d){
 
 static VALUE setscale(VALUE self,VALUE options){
 	int optionsc = NUM2INT(options);
-	gr_setscale(optionsc);
-	return Qtrue;
+	return INT2NUM(gr_setscale(optionsc));
 }
 
 static VALUE inqscale(VALUE self,VALUE a){
@@ -813,8 +873,7 @@ static VALUE hexbin(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d){
 	double* bc = rb_ar_2_dbl_ar(b);
 	double* cc = rb_ar_2_dbl_ar(c);
 	int dc = NUM2INT(d);
-	gr_hexbin(ac,bc,cc,dc);
-	return Qtrue;
+	return INT2NUM(gr_hexbin(ac,bc,cc,dc));
 }
 
 static VALUE setcolormap(VALUE self,VALUE a){
@@ -845,6 +904,225 @@ static VALUE inqcolorfromrgb(VALUE self,VALUE a,VALUE b,VALUE c){
 	double ac = NUM2DBL(a);
 	double bc = NUM2DBL(b);
 	double cc = NUM2DBL(c);
-	gr_inqcolorfromrgb(ac,bc,cc);
+	return INT2NUM(gr_inqcolorfromrgb(ac,bc,cc));
+}
+
+static VALUE hsvtorgb(VALUE self,VALUE h,VALUE s,VALUE v ,VALUE r,VALUE g,VALUE b){
+	double hc = NUM2DBL(h);
+	double sc = NUM2DBL(s);
+	double vc = NUM2DBL(v);
+	double *rc = rb_ar_2_dbl_ar(r);
+	double *gc = rb_ar_2_dbl_ar(g);
+	double *bc = rb_ar_2_dbl_ar(b);
+	gr_hsvtorgb(hc,sc,vc,rc,gc,bc);
+	return Qtrue;
+}
+
+static VALUE tick(VALUE self,VALUE a,VALUE b){
+	double ac = NUM2DBL(a);
+	double bc = NUM2DBL(b);
+	return DBL2NUM(gr_tick(ac,bc));
+}
+
+static VALUE validaterange(VALUE self,VALUE a,VALUE b){
+	double ac = NUM2DBL(a);
+	double bc = NUM2DBL(b);
+	return INT2NUM(gr_validaterange(ac,bc));
+}
+
+static VALUE adjustlimits(VALUE self,VALUE a,VALUE b){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	gr_adjustlimits(ac,bc);
+	return Qtrue;
+}
+
+static VALUE adjustrange(VALUE self,VALUE a,VALUE b){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	gr_adjustrange(ac,bc);
+	return Qtrue;
+}
+
+static VALUE beginprint(VALUE self,VALUE pathname){
+	char *pathnamec = StringValueCStr(pathname);
+	gr_beginprint(pathnamec);
+	return Qtrue;
+}
+
+static VALUE beginprintext(VALUE self,VALUE pathname,VALUE mode,VALUE format,VALUE orientation){
+	char *pathnamec = StringValueCStr(pathname);
+	char *modec = StringValueCStr(mode);
+	char *formatc = StringValueCStr(format);
+	char *orientationc = StringValueCStr(orientation);
+	gr_beginprintext(pathnamec,modec,formatc,orientationc);
+	return Qtrue;
+}
+
+static VALUE endprint(VALUE self){
+	gr_endprint();
+	return Qtrue;
+}
+
+static VALUE ndctowc(VALUE self,VALUE a,VALUE b){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	gr_ndctowc(ac,bc);
+	return Qtrue;
+}
+
+static VALUE wctondc(VALUE self,VALUE a,VALUE b){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	gr_wctondc(ac,bc);
+	return Qtrue;
+}
+
+static VALUE wc3towc(VALUE self,VALUE a,VALUE b,VALUE c){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	double *cc = rb_ar_2_dbl_ar(c);
+	gr_wc3towc(ac,bc,cc);
+	return Qtrue;
+}
+
+static VALUE drawrect(VALUE self,VALUE xmin,VALUE xmax,VALUE ymin,VALUE ymax){
+	double xminc = NUM2DBL(xmin);
+	double xmaxc = NUM2DBL(xmax);
+	double yminc = NUM2DBL(ymin);
+	double ymaxc = NUM2DBL(ymax);
+	gr_drawrect(xminc,xmaxc,yminc,ymaxc);
+	return Qtrue;
+}
+
+static VALUE fillrect(VALUE self,VALUE xmin,VALUE xmax,VALUE ymin,VALUE ymax){
+	double xminc = NUM2DBL(xmin);
+	double xmaxc = NUM2DBL(xmax);
+	double yminc = NUM2DBL(ymin);
+	double ymaxc = NUM2DBL(ymax);
+	gr_fillrect(xminc,xmaxc,yminc,ymaxc);
+	return Qtrue;
+}
+
+static VALUE drawarc(VALUE self,VALUE xmin,VALUE xmax,VALUE ymin,VALUE ymax,VALUE a1,VALUE a2){
+	double xminc = NUM2DBL(xmin);
+	double xmaxc = NUM2DBL(xmax);
+	double yminc = NUM2DBL(ymin);
+	double ymaxc = NUM2DBL(ymax);
+	int a1c = NUM2INT(a1);
+	int a2c = NUM2INT(a2);
+	gr_drawarc(xminc,xmaxc,yminc,ymaxc,a1c,a2c);
+	return Qtrue;
+}
+
+static VALUE fillarc(VALUE self,VALUE xmin,VALUE xmax,VALUE ymin,VALUE ymax,VALUE a1,VALUE a2){
+	double xminc = NUM2DBL(xmin);
+	double xmaxc = NUM2DBL(xmax);
+	double yminc = NUM2DBL(ymin);
+	double ymaxc = NUM2DBL(ymax);
+	int a1c = NUM2INT(a1);
+	int a2c = NUM2INT(a2);
+	gr_fillarc(xminc,xmaxc,yminc,ymaxc,a1c,a2c);
+	return Qtrue;
+}
+
+/*static VALUE drawpath(VALUE self,VALUE,VALUE,VALUE,VALUE){
+	gr_drawpath();
+	return Qtrue;
+}
+requires a struct do that
+*/
+
+static VALUE setarrowstyle(VALUE self,VALUE style){
+	int stylec = NUM2INT(style);
+	gr_setarrowstyle(stylec);
+	return Qtrue;
+}
+
+static VALUE setarrowsize(VALUE self,VALUE size){
+	int sizec = NUM2INT(size);
+	gr_setarrowsize(size);
+	return Qtrue;
+}
+
+static VALUE drawarrow(VALUE self,VALUE x1,VALUE y1,VALUE x2,VALUE y2){
+	double x1c = NUM2DBL(x1);
+	double x2c = NUM2DBL(x2);
+	double y1c = NUM2DBL(y1);
+	double y2c = NUM2DBL(y2);
+	gr_drawarrow(x1c,x2c,y1c,y2c);
+	return Qtrue;
+}
+
+/*static VALUE readimage(VALUE self,VALUE,VALUE,VALUE,VALUE){
+	gr_readimage();
+	return Qtrue;
+}
+requires 2d array
+*/
+
+static VALUE drawimage(VALUE self,VALUE xmin,VALUE xmax,VALUE ymin,VALUE ymax,VALUE width,VALUE height,VALUE data,VALUE model){
+	double xminc = NUM2DBL(xmin);
+	double xmaxc = NUM2DBL(xmax);
+	double yminc = NUM2DBL(ymin);
+	double ymaxc = NUM2DBL(ymax);
+	int widthc = NUM2INT(width);
+	int heightc = NUM2INT(height);
+	int *datac = rb_ar_2_int_ar(data);
+	int modelc = NUM2INT(model);
+	gr_drawimage(xminc,xmaxc,yminc,ymaxc,widthc,heightc,datac,modelc);
+	return Qtrue;
+}
+
+static VALUE importgraphics(VALUE self,VALUE a){
+	char *ac = StringValueCStr(a);
+	return INT2NUM(gr_importgraphics(ac));
+}
+
+static VALUE setshadow(VALUE self,VALUE offsetx,VALUE offsety,VALUE blur){
+	double offsetxc = NUM2DBL(offsetx);
+	double offsetyc = NUM2DBL(offsety);
+	double blurc = NUM2DBL(blur);
+	gr_setshadow(offsetxc,offsetyc,blurc);
+	return Qtrue;
+}
+
+static VALUE settransparency(VALUE self,VALUE alpha){
+	double alphac = NUM2DBL(alpha);
+	gr_settransparency(alphac);
+	return Qtrue;
+}
+
+/*static VALUE setcoordxform(VALUE self,VALUE){
+	gr_setcoordxform();
+	return Qtrue;
+} 2d matrix*/
+
+static VALUE begingraphics(VALUE self,VALUE path){
+	char *pathc = StringValueCStr(path);
+	gr_begingraphics(pathc);
+	return Qtrue;
+}
+
+static VALUE endgraphics(VALUE self){
+	gr_endgraphics();
+	return Qtrue;
+}
+
+static VALUE getgraphics(VALUE self){
+	char *ac = gr_getgraphics();
+	return rb_str_new2(ac);
+}
+
+static VALUE drawgraphics(VALUE self,VALUE a){
+	char *ac = StringValueCStr(a);
+	return INT2NUM(gr_drawgraphics(ac));
+}
+
+static VALUE mathtex(VALUE self,VALUE x,VALUE y,VALUE string){
+	double xc = NUM2DBL(x);
+	double yc = NUM2DBL(y);
+	char *stringc=StringValueCStr(string);
+	gr_mathtex(xc,yc,stringc);
 	return Qtrue;
 }
