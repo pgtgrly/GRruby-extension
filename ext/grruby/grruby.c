@@ -114,12 +114,43 @@ static VALUE endgraphics(VALUE);
 static VALUE getgraphics(VALUE);
 static VALUE drawgraphics(VALUE,VALUE);
 static VALUE mathtex(VALUE,VALUE,VALUE,VALUE);
-
+static VALUE inqmathtex(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE beginselection(VALUE,VALUE,VALUE);
+static VALUE endselection(VALUE);
+static VALUE moveselection(VALUE,VALUE,VALUE);
+static VALUE resizeselection(VALUE,VALUE,VALUE,VALUE);
+static VALUE inqbbox(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE precision(VALUE);
+static VALUE setregenflags(VALUE,VALUE);
+static VALUE inqregenflags(VALUE);
+static VALUE savestate(VALUE);
+static VALUE restorestate(VALUE);
+static VALUE selectcontext(VALUE,VALUE);
+static VALUE destroycontext(VALUE,VALUE);
+static VALUE uselinespec(VALUE,VALUE);
+static VALUE delaunay(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE reducepoints(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE trisurface(VALUE,VALUE,VALUE,VALUE);
+static VALUE gradient(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE quiver(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE interp2(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE meta_args_t(VALUE,VALUE);
+static VALUE meta_args_delete(VALUE,VALUE);
+static VALUE meta_args_push_arg(VALUE,VALUE,VALUE,VALUE);
+static VALUE meta_args_push_arg_buf(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE meta_args_push_kwarg(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE meta_args_push_kwarg_buf(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE openmeta(VALUE,VALUE,VALUE);
+static VALUE sendmeta(VALUE,VALUE,VALUE,VALUE);
+static VALUE sendmeta_buf(VALUE,VALUE,VALUE,VALUE,VALUE);
+static VALUE sendmeta_args(VALUE,VALUE,VALUE);
+static VALUE closemeta(VALUE,VALUE);
+static VALUE version(VALUE);
 
 
 
 void Init_grruby(){
-	VALUE mGRruby=rb_define_module("GRruby");
+	VALUE mGRruby=rb_define_module("GR");
 
 	rb_define_singleton_method(mGRruby,"opengks",opengks,0);
 	rb_define_singleton_method(mGRruby,"closegks",closegks,0);
@@ -232,6 +263,43 @@ void Init_grruby(){
 	rb_define_singleton_method(mGRruby,"getgraphics",getgraphics,0);
 	rb_define_singleton_method(mGRruby,"drawgraphics",drawgraphics,1);
 	rb_define_singleton_method(mGRruby,"mathtex",mathtex,3);
+	rb_define_singleton_method(mGRruby,"inqmathtex",inqmathtex,5);
+	rb_define_singleton_method(mGRruby,"beginselection",beginselection,2);
+	rb_define_singleton_method(mGRruby,"endselection",endselection,0);
+	rb_define_singleton_method(mGRruby,"moveselection",moveselection,2);
+	rb_define_singleton_method(mGRruby,"resizeselection",resizeselection,3);
+	rb_define_singleton_method(mGRruby,"inqbbox",inqbbox,4);
+	rb_define_singleton_method(mGRruby,"precision",precision,0);
+	rb_define_singleton_method(mGRruby,"setregenflags",setregenflags,1);
+	rb_define_singleton_method(mGRruby,"inqregenflags",inqregenflags,0);
+	rb_define_singleton_method(mGRruby,"savestate",savestate,0);
+	rb_define_singleton_method(mGRruby,"restorestate",restorestate,0);
+	rb_define_singleton_method(mGRruby,"selectcontext",selectcontext,1);
+	rb_define_singleton_method(mGRruby,"destroycontext",destroycontext,1);
+	rb_define_singleton_method(mGRruby,"uselinespec",uselinespec,1);
+	//rb_define_singleton_method(mGRruby,"delaunay",delaunay,5);
+	//rb_define_singleton_method(mGRruby,"reducepoints",reducepoints,6);
+	rb_define_singleton_method(mGRruby,"trisurface",trisurface,3);
+	rb_define_singleton_method(mGRruby,"gradient",gradient,7);
+	rb_define_singleton_method(mGRruby,"quiver",quiver,7);
+	/*
+	//rb_define_singleton_method(mGRruby,"interp2",interp2,12);
+	rb_define_singleton_method(mGRruby,"meta_args_t",meta_args_t,1);
+	rb_define_singleton_method(mGRruby,"meta_args_delete",meta_args_delete,1);
+	rb_define_singleton_method(mGRruby,"meta_args_push_arg",meta_args_push_arg,3);
+	rb_define_singleton_method(mGRruby,"meta_args_push_arg_buf",meta_args_push_arg_buf,4);
+	rb_define_singleton_method(mGRruby,"meta_args_push_kwarg",meta_args_push_kwarg,4);
+	rb_define_singleton_method(mGRruby,"meta_args_push_kwarg_buf",meta_args_push_kwarg_buf,5);
+	rb_define_singleton_method(mGRruby,"openmeta",openmeta,2);
+	rb_define_singleton_method(mGRruby,"sendmeta",sendmeta,3);
+	rb_define_singleton_method(mGRruby,"sendmeta_buf",sendmeta_buf,4);
+	rb_define_singleton_method(mGRruby,"sendmeta_args",sendmeta_args,2);
+	rb_define_singleton_method(mGRruby,"closemeta",closemeta,1);
+*/
+	rb_define_singleton_method(mGRruby,"version",version,0);
+
+	
+	
 	
 }
 
@@ -1126,3 +1194,206 @@ static VALUE mathtex(VALUE self,VALUE x,VALUE y,VALUE string){
 	gr_mathtex(xc,yc,stringc);
 	return Qtrue;
 }
+
+static VALUE inqmathtex(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d,VALUE e){
+	double ac = NUM2DBL(a);
+	double bc = NUM2DBL(b);
+	char *cc = StringValueCStr(c);
+	double *dc = rb_ar_2_dbl_ar(d);
+	double *ec = rb_ar_2_dbl_ar(e);
+	gr_inqmathtex(ac,bc,cc,dc,ec);
+	return Qtrue;
+}
+
+static VALUE beginselection(VALUE self,VALUE a,VALUE b){
+	int ac = NUM2INT(a);
+	int bc = NUM2INT(b);
+	gr_beginselection(ac,bc);
+	return Qtrue;
+}
+
+static VALUE endselection(VALUE self){
+	gr_endselection();
+	return Qtrue;
+}
+
+static VALUE moveselection(VALUE self,VALUE a,VALUE b){
+	double ac = NUM2DBL(a);
+	double bc = NUM2DBL(b);
+	gr_moveselection(ac,bc);
+	return Qtrue;
+}
+
+static VALUE resizeselection(VALUE self,VALUE a,VALUE b,VALUE c){
+	int ac = NUM2INT(a);
+	double bc = NUM2DBL(b);
+	double cc = NUM2DBL(c);
+	gr_resizeselection(ac,bc,cc);
+	return Qtrue;
+}
+
+static VALUE inqbbox(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d){
+	double *ac = rb_ar_2_dbl_ar(a);
+	double *bc = rb_ar_2_dbl_ar(b);
+	double *cc = rb_ar_2_dbl_ar(c);
+	double *dc = rb_ar_2_dbl_ar(d);
+	gr_inqbbox(ac,bc,cc,dc);
+	return Qtrue; 
+}
+
+static VALUE precision(VALUE self){
+	
+	return DBL2NUM(gr_precision());
+}
+
+static VALUE setregenflags(VALUE self,VALUE a){
+	int ac = NUM2INT(a);
+	gr_setregenflags(ac);
+	return Qtrue;
+}
+
+static VALUE inqregenflags(VALUE self){
+	return INT2NUM(gr_inqregenflags());
+}
+
+static VALUE savestate(VALUE self){
+	gr_savestate();
+	return Qtrue;
+}
+
+static VALUE restorestate(VALUE self){
+	gr_restorestate();
+	return Qtrue;
+}
+
+static VALUE selectcontext(VALUE self,VALUE a){
+	int ac = NUM2INT(a);
+	gr_selectcontext(ac);
+	return Qtrue;
+}
+
+static VALUE destroycontext(VALUE self,VALUE a){
+	int ac = NUM2INT(a);
+	gr_destroycontext(ac);
+	return Qtrue;
+}
+
+static VALUE uselinespec(VALUE self,VALUE a){
+	char *ac = StringValueCStr(a);
+	return INT2NUM(gr_uselinespec(ac));
+}
+
+/*static VALUE delaunay(VALUE self,VALUE,VALUE,VALUE,VALUE,VALUE){
+	gr_delaunay();
+	return Qtrue;
+}
+
+static VALUE reducepoints(VALUE self,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE){
+	gr_reducepoints();
+	return Qtrue;
+}
+*/
+static VALUE trisurface(VALUE self,VALUE px,VALUE py,VALUE pz){
+	int x_size = RARRAY_LEN(px);
+	int y_size = RARRAY_LEN(py);
+	int z_size = RARRAY_LEN(pz);
+   	int sizec = (x_size <= y_size)?x_size:y_size;
+   	sizec = (sizec <= z_size)?sizec:z_size;
+    double *xc = rb_ar_2_dbl_ar(px);
+    double *yc = rb_ar_2_dbl_ar(py); 
+    double *zc = rb_ar_2_dbl_ar(pz); 
+	gr_trisurface(sizec,xc,yc,zc);
+	return Qtrue;
+}
+
+static VALUE gradient(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d,VALUE e,VALUE f,VALUE g){
+	int ac = NUM2INT(a);
+	int bc = NUM2INT(b);
+	double *cc = rb_ar_2_dbl_ar(c);
+	double *dc = rb_ar_2_dbl_ar(d);
+	double *ec = rb_ar_2_dbl_ar(e);
+	double *fc = rb_ar_2_dbl_ar(f);
+	double *gc = rb_ar_2_dbl_ar(g);
+	gr_gradient(ac,bc,cc,dc,ec,fc,gc);
+	return Qtrue;
+}
+
+static VALUE quiver(VALUE self,VALUE a,VALUE b,VALUE c,VALUE d,VALUE e,VALUE f,VALUE g){
+	int ac = NUM2INT(a);
+	int bc = NUM2INT(b);
+	double *cc = rb_ar_2_dbl_ar(c);
+	double *dc = rb_ar_2_dbl_ar(d);
+	double *ec = rb_ar_2_dbl_ar(e);
+	double *fc = rb_ar_2_dbl_ar(f);
+	int gc = NUM2INT(g);
+	gr_quiver(ac,bc,cc,dc,ec,fc,gc);
+	return Qtrue;
+}
+
+/*
+static VALUE interp2(VALUE self,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE){
+	gr_interp2();
+	return Qtrue;
+}
+
+static VALUE meta_args_t(VALUE self,VALUE){
+	gr_meta_args_t();
+	return Qtrue;
+}
+
+static VALUE meta_args_delete(VALUE self,VALUE){
+	gr_meta_args_delete();
+	return Qtrue;
+}
+
+static VALUE meta_args_push_arg(VALUE self,VALUE,VALUE,VALUE){
+	gr_meta_args_push_arg();
+	return Qtrue;
+}
+
+static VALUE meta_args_push_arg_buf(VALUE self,VALUE,VALUE,VALUE,VALUE){
+	gr_meta_args_push_arg_buf();
+	return Qtrue;
+}
+
+static VALUE meta_args_push_kwarg(VALUE self,VALUE,VALUE,VALUE,VALUE){
+	gr_meta_args_push_kwarg();
+	return Qtrue;
+}
+
+static VALUE meta_args_push_kwarg_buf(VALUE self,VALUE,VALUE,VALUE,VALUE,VALUE){
+	gr_meta_args_push_kwarg_buf();
+	return Qtrue;
+}
+
+static VALUE openmeta(VALUE self,VALUE,VALUE){
+	gr_openmeta();
+	return Qtrue;
+}
+
+static VALUE sendmeta(VALUE self,VALUE,VALUE,VALUE){
+	gr_sendmeta();
+	return Qtrue;
+}
+
+static VALUE sendmeta_buf(VALUE self,VALUE,VALUE,VALUE,VALUE){
+	gr_sendmeta_buf();
+	return Qtrue;
+}
+
+static VALUE sendmeta_args(VALUE self,VALUE,VALUE){
+	gr_sendmeta_args();
+	return Qtrue;
+}
+
+static VALUE closemeta(VALUE self,VALUE){
+	gr_closemeta();
+	return Qtrue;
+}
+*/
+static VALUE version(VALUE self){
+	const char *verc=gr_version();
+	return rb_str_new2(verc);
+}
+
+
