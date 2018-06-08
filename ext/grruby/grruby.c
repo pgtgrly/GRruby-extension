@@ -277,8 +277,8 @@ void Init_grruby(){
 	rb_define_singleton_method(mGRruby,"selectcontext",selectcontext,1);
 	rb_define_singleton_method(mGRruby,"destroycontext",destroycontext,1);
 	rb_define_singleton_method(mGRruby,"uselinespec",uselinespec,1);
-	//rb_define_singleton_method(mGRruby,"delaunay",delaunay,5);
-	//rb_define_singleton_method(mGRruby,"reducepoints",reducepoints,6);
+	rb_define_singleton_method(mGRruby,"delaunay",delaunay,5);
+	rb_define_singleton_method(mGRruby,"reducepoints",reducepoints,6);
 	rb_define_singleton_method(mGRruby,"trisurface",trisurface,3);
 	rb_define_singleton_method(mGRruby,"gradient",gradient,7);
 	rb_define_singleton_method(mGRruby,"quiver",quiver,7);

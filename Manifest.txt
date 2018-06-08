@@ -4,4 +4,4 @@ Manifest.txt
 README.rdoc
 Rakefile
 lib/grruby.rb
-test/test_grruby.rb
+.rspec
