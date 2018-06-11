@@ -19,6 +19,6 @@ end
 
 
 
-Rake::Task[:test].prerequisites << :compile
+Rake::Task[:spec].prerequisites << :compile
 
 # vim: syntax=ruby
