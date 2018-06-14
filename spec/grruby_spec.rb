@@ -1,5 +1,8 @@
 require './lib/grruby'
+require 'rmagick'
+include Magick
 
+system 'mkdir', '-p', 'spec/tmp'
 RSpec.describe GR do 
   describe ".version" do
     it 'returns the version of GR Framework' do
@@ -7,3 +10,5 @@ RSpec.describe GR do
     end
   end
 end
+
+system 'rm', '-rf', 'spec/tmp'
