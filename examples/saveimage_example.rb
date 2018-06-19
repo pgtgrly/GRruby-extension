@@ -1,6 +1,5 @@
 require "../lib/grruby.rb"
 GR.beginprint("hello.bmp")
-Gr.beginprint("hello1.bmp")
 GR.setviewport(0.1, 0.95, 0.1, 0.95)
 GR.setwindow(-10, 10, -10, 10)
 GR.setspace(-0.5, 0.5, 0, 90)
