@@ -1,16 +1,17 @@
 module Rubyplot
-  class Bar < Rubyplot::Artist
+  class Line < Rubyplot::Artist
     attr_accessor :margin, :marker_count
-    def data(dataname, datalist)
+    def data(dataname, x_data, y_data)
       @dataname = dataname
-      @datalist = datalist
+      @x_data = x_data
+      @y_data = y_data
       @minval, @maxval = @datalist.minmax
       @margin = 1 # Decides how many ticks above the higest value and
       @marker_count = 'default' # below the lowest value
       @titleshift = 0
     end
 
-    def draw_bars
+    def draw_line
       (0..@datalist.size - 1).to_a.each do |i| # Adds the instance to draw bars
         @tasks.push(GrSetFillColorInd.new(989)) # to task list
         @tasks.push(GrSetFillIntStyle.new(1))

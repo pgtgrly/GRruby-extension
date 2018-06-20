@@ -3,7 +3,7 @@ module Rubyplot
     attr_accessor :title
     def initialize
       @tasks = []
-      @title = NIL
+      @title = nil
       @drawn_flag = false
     end
 
