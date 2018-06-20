@@ -1,29 +1,38 @@
-
 module Rubyplot
   class Artist
     attr_accessor :title
     def initialize
-      @tasks=[]
-      @title= NIL
+      @tasks = []
+      @title = NIL
+      @drawn_flag = false
     end
 
     def draw
-
+      return if @drawn_flag 
+      @drawn_flag = true    
     end
 
-    def write filename
+    def write(filename)
       draw
-    	GR.beginprint(filename)
-    	@tasks.each do |task|
-    		task.call()
-    	end
-    	GR.endprint()
-
+      GrBeginPrint.new(filename).call
+      @tasks.each do |task|
+        task.call()
+      end
+      GrEndPrint.new.call
     end
 
-    def add_legend dataname
-
+    def display
+      draw
+      @tasks.each do |task|
+        task.call()
+      end
+      GrUpdateWs.new.call
+      puts("\nPress any button to continue")
+      gets
     end
 
+    def add_legend(dataname)
+
+    end
   end
 end
