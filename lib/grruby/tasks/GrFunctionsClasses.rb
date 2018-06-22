@@ -184,6 +184,23 @@ module Rubyplot
         end
       end
 
+      class Grid
+        def initialize(x_major_tick, y_major_tick, x_origin, y_origin, major_x,
+                       major_y)
+          @x_major_tick = x_major_tick
+          @y_major_tick = y_major_tick
+          @x_origin = x_origin
+          @y_origin = y_origin
+          @major_x = major_x
+          @major_y = major_y
+        end
+
+        def call
+          GR.grid(@x_major_tick, @y_major_tick, @x_origin, @y_origin, @major_x,
+                  @major_y)
+        end
+      end
+
       class Text
         def initialize(x_loc, y_loc, text_string)
           @x_loc = x_loc

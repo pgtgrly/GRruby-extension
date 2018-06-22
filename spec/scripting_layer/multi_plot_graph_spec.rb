@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Rubyplot::Rbplot do
+describe Rubyplot::Figure do
   before do
     @x1 = [-10, 0, 5, 28]
     @y1 = [1, 2, 3, 4]
@@ -10,7 +10,7 @@ describe Rubyplot::Rbplot do
 
   context '#line #scatter' do
     it 'creates a line and scatter graph' do
-      a = Rubyplot::Rbplot.new
+      a = Rubyplot::Figure.new
       a.title 'My cool graph'
       a.line @x1, @y1
       a.scatter @x2, @y2

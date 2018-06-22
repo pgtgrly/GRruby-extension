@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Rubyplot::Rbplot do
+describe Rubyplot::Figure do
   before do
     @x1 = [1, 2, 3, 4, 5]
     @y1 = [10, 20, 30, 40, 50]
@@ -8,7 +8,7 @@ describe Rubyplot::Rbplot do
 
   context '#line' do
     it 'creates a simple line graph' do
-      a = Rubyplot::Rbplot.new
+      a = Rubyplot::Figure.new
       a.line @x1, @y1
       a.save 'file_name.bmp'
 
@@ -16,7 +16,7 @@ describe Rubyplot::Rbplot do
     end
 
     it 'creates a line graph with points marked' do
-      a = Rubyplot::Rbplot.new
+      a = Rubyplot::Figure.new
       a.line @x1, @y1, markers: true
       a.save 'file_name.bmp'
 
@@ -26,7 +26,7 @@ describe Rubyplot::Rbplot do
 
   context '#scatter' do
     it 'creates a simple scatter graph' do
-      a = Rubyplot::Rbplot.new
+      a = Rubyplot::Figure.new
       a.scatter @x1, @y1
       a.save 'file_name.bmp'
 
