@@ -17,7 +17,7 @@ describe Rubyplot::Rbplot do
 
     it 'creates a line graph with points marked' do
       a = Rubyplot::Rbplot.new
-      a.line @x1, @y1, points: true
+      a.line @x1, @y1, markers: true
       a.save 'file_name.bmp'
 
       expect(equal_files('file_name.bmp', 'line_points_graph.bmp')).to eq(true)

@@ -25,6 +25,26 @@ module Rubyplot
         end
       end
 
+      class Polymarker
+        def initialize(x_coordinates, y_coordinates)
+          @x_coordinates = x_coordinates
+          @y_coordinates = y_coordinates
+        end
+        def call
+          GR.polymarker(@x_coordinates, @y_coordinates)
+        end
+      end
+
+      class Polyline
+        def initialize(x_coordinates, y_coordinates)
+          @x_coordinates = x_coordinates
+          @y_coordinates = y_coordinates
+        end
+        def call
+          GR.polyline(@x_coordinates, @y_coordinates)
+        end
+      end
+
       class FillRect
         def initialize(x_min, x_max, y_min, y_max)
           @x_min = x_min
@@ -38,7 +58,7 @@ module Rubyplot
         end
       end
 
-      class SetFillColorInd
+      class SetFillColorIndex
         def initialize(color_int)
           @color_int = color_int
         end
@@ -104,6 +124,16 @@ module Rubyplot
         end
       end
 
+      class SetMarkerColorIndex
+        def initialize(index)
+          @index = index
+        end
+
+        def call
+          GR.setmarkercolorind(@index)
+        end
+      end
+
       class SetTextAlign
         def initialize(horizontal, vertical)
           @horizontal = horizontal
@@ -165,6 +195,50 @@ module Rubyplot
           GR.text(@x_loc, @y_loc, @text_string)
         end
       end
+
+      # Will define color index, fonts, marker types and other constants
+      # color index between 1 to 1256. map all prominent ones here
+      BLACK = 1
+      GREEN = 900
+
+      #Marker types
+      DOT = 1
+      PLUS = 2
+      ASTERISK = 3
+      CIRCLE = 4
+      DIAGONAL_CROSS = 5
+      SOLID_CIRCLE = -1
+      TRIANGLE_UP = -2
+      SOLID_TRI_UP = -3
+      TRIANGLE_DOWN  = -4
+      SOLID_TRI_DOWN = -5
+      SQUARE = -6
+      SOLID_SQUARE = -7
+      BOWTIE = -8
+      SOLID_BOWTIE = -9
+      HGLASS = -10
+      SOLID_HGLASS = -11
+      DIAMOND = -12
+      SOLID_DIAMOND = -13
+      STAR = -14
+      SOLID_STAR = -15
+      TRI_UP_DOWN = -16
+      SOLID_TRI_RIGHT = -17
+      SOLID_TRI_LEFT = -18
+      HOLLOW_PLUS = -19
+      SOLID_PLUS = -20
+      PENTAGON = -21
+      HEXAGON = -22
+      HEPTAGON = -23
+      OCTAGON = -24
+      STAR_4 = -25
+      STAR_5 = -26
+      STAR_6 = -27
+      STAR_7 = -28
+      STAR_8 = -29
+      VLINE = -30
+      HLINE = -31
+      OMARK = -32
     end
   end
 end
