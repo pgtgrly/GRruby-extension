@@ -181,7 +181,7 @@ module Rubyplot
         end
       end
 
-      class SetTextFontPrec
+      class SetTextFontPrecision
         def initialize(font, precision)
           @font = font
           @precision = precision
@@ -252,8 +252,10 @@ module Rubyplot
       # Will define color index, fonts, marker types and other constants
       # color index between 1 to 1256. map all prominent ones here
       GR_COLOR_INDEX = {
-        BLACK: 1,
-        GREEN: 900
+        BLACK: 80,
+        BLUE: 257,
+        GREEN: 477,
+        RED: 367
       }.freeze
 
       GR_FONTS = {

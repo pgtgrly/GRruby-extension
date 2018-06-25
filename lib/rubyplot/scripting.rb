@@ -12,7 +12,7 @@ module Rubyplot
       @title = nil
       @title_shift = 0
       @drawn_flag = false
-      @margin = 1 # Decides how many ticks above the higest value and
+      @margin = :default # Decides how many ticks above the higest value and
       @ticks_count = :default
       @drawing_size = :default
       @drawing_color = :default
@@ -20,11 +20,12 @@ module Rubyplot
       @grid = true
       @bounding_box = true
       @data_represent_flag = false
-      @data_plot_flag =  false
+      @data_plot_flag = false
     end
 
-    def scatter(x_coordinates, y_coordinates, marker_size: :default,
+    def scatter!(x_coordinates, y_coordinates, marker_size: :default,
                 marker_color: :default, marker_type: :default)
+                #give opions for colors as rgb
       if @data_represent_flag
         puts("\nThe figure is of data representation type")
         return
@@ -46,7 +47,7 @@ module Rubyplot
                   marker_type: marker_type))
     end
 
-    def line(x_coordinates, y_coordinates,line_width: :default,
+    def line!(x_coordinates, y_coordinates, line_width: :default,
              line_color: :default, line_type: :default,
              marker_size: :default, marker_color: :default,
              marker_type: :default)
@@ -83,28 +84,31 @@ module Rubyplot
 
     end
 
-    def set_axis # for internal use before drawing
+    def set_axis! # for internal use before drawing
       #Automate tick sizes so that it is not too conjested
       if @title != nil # GR framework requires axes to be set up before plotting
         @title_shift = 0.1 # only decrease the plotting area if title is present
       end
+      @x_axis_padding =  Math.log((@x_range[1] - @x_range[0]), 10).round
+      @y_axis_padding =  Math.log((@y_range[1] - @y_range[0]), 10).round
       SetViewPort.new(0.05, 0.99, 0.05, 0.99 - @title_shift).call
-      SetWindow.new(@x_range[0], @x_range[1], @y_range[0],@y_range[1]).call
+      SetWindow.new(@x_range[0] - @x_axis_padding, @x_range[1] + @x_axis_padding,
+                    @y_range[0] - @y_axis_padding, @y_range[1] + @y_axis_padding).call
       # Make sure that window is set bigger than range figure out how to manage it
       SetTextAlign.new(2, 0).call
       if @text_font == :default
         @text_font = :TIMES_ROMAN
       end
-      SetTextFontPrec.new(GR_FONTS[@text_font], 0).call
+      SetTextFontPrecision.new(GR_FONTS[@text_font],
+                               GR_FONT_PRECISION[:TEXT_PRECISION_STRING]).call
       SetCharHeight.new(0.012).call
       @y_tick_count = 10 if @y_tick_count == :default
-      @x_tick_count = 10 if @x_tick_count == :default #10 ticks by default
-      Axes.new((@x_range[1] - @x_range[0]).to_f / @x_tick_count,
-                           (@y_range[1] - @y_range[0]).to_f / @y_tick_count,
-                           @x_range[0], @y_range[0], 1, 1, 0.01).call
+      @x_tick_count = 10 if @x_tick_count == :default # 10 ticks by default
       Grid.new((@x_range[1] - @x_range[0]).to_f / @x_tick_count,
-                          (@y_range[1] - @y_range[0]).to_f / @y_tick_count,
-                          @x_range[0], @y_range[0], 1, 1).call
+               (@y_range[1] - @y_range[0]).to_f / @y_tick_count,
+               0, 0, 1, 1).call
+      Axes.new((@x_range[1] - @x_range[0]).to_f / @x_tick_count,
+               (@y_range[1] - @y_range[0]).to_f / @y_tick_count,0, 0, 1, 1, 0.01).call
       if @title_shift != 0
         SetCharHeight.new(0.05).call
         Text.new(0.5, 0.9, @title).call
@@ -112,7 +116,7 @@ module Rubyplot
     end
 
     def view
-      set_axis
+      set_axis!
       @tasks.each do |task|
         task.call()
       end
@@ -124,7 +128,7 @@ module Rubyplot
 
     def save(file_name)
       BeginPrint.new(file_name).call
-      set_axis
+      set_axis!
       @tasks.each do |task|
         task.call()
       end
@@ -147,7 +151,7 @@ module Rubyplot
       @grid = true
       @bounding_box = true
       @data_represent_flag = false
-      @data_plot_flag =  false
+      @data_plot_flag = false
     end
   end
 end
@@ -155,39 +159,5 @@ end
 
 =begin
 Known Bugs:
-- Grid is working for #save but not for #display
-=end
-=begin
-    class
-      attr_accessor :title
-      def initialize
-        @tasks = []
-        @title = nil
-        @drawn_flag = false
-      end
-
-      def draw
-        return if @drawn_flag
-        @drawn_flag = true
-      end
-
-      def write(filename)
-        draw
-        GrBeginPrint.new(filename).call
-        @tasks.each do |task|
-          task.call()
-        end
-        GrEndPrint.new.call
-      end
-
-      def display
-        draw
-        @tasks.each do |task|
-          task.call()
-        end
-        GrUpdateWs.new.call
-        puts("\nPress any button to continue")
-        gets
-    end
 
 =end

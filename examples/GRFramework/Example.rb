@@ -6,7 +6,7 @@ GR.setmarkersize(1.0)
 GR.setmarkertype(-1)
 GR.settextalign(2, 0)
 GR.settextfontprec(103, 0)
-GR.setfillintstyle(1)
+GR.setfillintstyle(600)
 GR.setcharheight(0.048)
 GR.text(0.25, 0.75, "GR\nRocks!")
 j=0;
