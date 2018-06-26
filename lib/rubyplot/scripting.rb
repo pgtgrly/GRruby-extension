@@ -97,13 +97,16 @@ module Rubyplot
       # Make sure that window is set bigger than range figure out how to manage it
       SetTextAlign.new(2, 0).call
       if @text_font == :default
-        @text_font = :TIMES_ROMAN
+        @text_font = :times_roman
       end
       SetTextFontPrecision.new(GR_FONTS[@text_font],
-                               GR_FONT_PRECISION[:TEXT_PRECISION_STRING]).call
+                               GR_FONT_PRECISION[:text_precision_string]).call
       SetCharHeight.new(0.012).call
       @y_tick_count = 10 if @y_tick_count == :default
       @x_tick_count = 10 if @x_tick_count == :default # 10 ticks by default
+      @tasks.push(SetLineColorIndex.new(GR_COLOR_INDEX[:black]))
+      @tasks.push(SetLineWidth.new(1))
+      @tasks.push(SetLineType.new(GR_LINE_TYPES[:solid]))
       Grid.new((@x_range[1] - @x_range[0]).to_f / @x_tick_count,
                (@y_range[1] - @y_range[0]).to_f / @y_tick_count,
                0, 0, 1, 1).call
