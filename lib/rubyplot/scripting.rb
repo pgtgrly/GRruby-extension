@@ -2,7 +2,9 @@ module Rubyplot
   class Figure
     include Rubyplot::Scripting::Plots
     include Rubyplot::GRWrapper::Tasks
-    attr_accessor :title, :grid, :bounding_box, :text_font
+    attr_accessor :x_range, :y_range, :x_tick_count, :y_tick_count,
+                  :title, :text_font, :grid, :bounding_box
+    attr_reader :tasks, :title_shift
     def initialize
       @tasks = []
       @x_range = [0, 0]
@@ -80,15 +82,11 @@ module Rubyplot
     end
 
     def view
-      Rubyplot::Plotspace.new(@tasks, @x_range, @y_range, @x_tick_count,
-                              @y_tick_count,@title, @title_shift, @text_font,
-                              @grid, @bounding_box).view!
+      Rubyplot::Plotspace.new(self).view!
     end
 
     def save(file_name)
-      Rubyplot::Plotspace.new(@tasks, @x_range, @y_range, @x_tick_count,
-                              @y_tick_count,@title, @title_shift, @text_font,
-                              @grid, @bounding_box).save!(file_name)
+      Rubyplot::Plotspace.new(self).save!(file_name)
     end
 
     def clear!

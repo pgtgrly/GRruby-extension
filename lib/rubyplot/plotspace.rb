@@ -1,18 +1,17 @@
 module Rubyplot
   class Plotspace
     include Rubyplot::GRWrapper::Tasks
-    def initialize(tasks, x_range, y_range, x_tick_count, y_tick_count, title,
-                   title_shift, text_font, grid, bounding_box)
-      @tasks = tasks
-      @x_range = x_range
-      @y_range = y_range
-      @x_tick_count = x_tick_count
-      @y_tick_count = y_tick_count
-      @title = title
-      @title_shift = title_shift
-      @text_font = text_font
-      @grid = grid
-      @bounding_box = bounding_box
+    def initialize(state)
+      @tasks = state.tasks
+      @x_range = state.x_range
+      @y_range = state.y_range
+      @x_tick_count = state.x_tick_count
+      @y_tick_count = state.y_tick_count
+      @title = state.title
+      @title_shift = state.title_shift
+      @text_font = state.text_font
+      @grid = state.grid
+      @bounding_box = state.bounding_box
     end
 
     def set_axis! # for internal use before drawing
