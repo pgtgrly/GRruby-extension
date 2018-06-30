@@ -5,6 +5,7 @@ module Rubyplot
     attr_accessor :x_range, :y_range, :x_tick_count, :y_tick_count,
                   :title, :text_font, :grid, :bounding_box
     attr_reader :tasks, :title_shift
+    
     def initialize
       @tasks = []
       @x_range = [0, 0]
@@ -21,7 +22,7 @@ module Rubyplot
     end
 
     def scatter!(x_coordinates, y_coordinates, marker_size: :default,
-                marker_color: :default, marker_type: :default)
+                 marker_color: :default, marker_type: :default)
                 #give opions for colors as rgb
       if @data_represent_flag
         puts("\nThe figure is of data representation type")
@@ -29,16 +30,19 @@ module Rubyplot
       else
         @data_plot_flag = true
       end
+      
       if x_coordinates.min < @x_range[0]
         @x_range[0] = x_coordinates.min
       elsif x_coordinates.max > @x_range[1]
         @x_range[1] = x_coordinates.max
       end
+      
       if y_coordinates.min < @y_range[0]
         @y_range[0] = y_coordinates.min
       elsif y_coordinates.max > @y_range[1]
         @y_range[1] = y_coordinates.max
       end
+      
       @tasks.push(Scatter.new(x_coordinates, y_coordinates,
                   marker_size: marker_size, marker_color: marker_color,
                   marker_type: marker_type))
@@ -54,16 +58,19 @@ module Rubyplot
       else
         @data_plot_flag = true
       end
+      
       if x_coordinates.min < @x_range[0]
         @x_range[0] = x_coordinates.min
       elsif x_coordinates.max > @x_range[1]
         @x_range[1] = x_coordinates.max
       end
+      
       if y_coordinates.min < @y_range[0]
         @y_range[0] = y_coordinates.min
       elsif y_coordinates.max > @y_range[1]
         @y_range[1] = y_coordinates.max
       end
+      
       @tasks.push(Line.new(x_coordinates, y_coordinates,
                            line_width: line_width, line_color: line_color,
                            line_type: line_type, marker_size: marker_size,
@@ -78,7 +85,6 @@ module Rubyplot
       else
         @data_represent_flag = true
       end
-
     end
 
     def view
