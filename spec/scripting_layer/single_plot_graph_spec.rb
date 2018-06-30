@@ -33,4 +33,20 @@ describe Rubyplot::Figure do
       expect(equal_files('file_name.bmp', 'scatter_graph.bmp')).to eq(true)
     end
   end
+
+  context "#bar!" do
+    before do
+      @x1 = (1..8).to_a
+      @y1 = [3, 10, 7, 5, 3, 4.5, 6, 8.1]
+      @width = 1/1.5
+    end
+    
+    it "creates a simple bar graph" do
+      a = Rubyplot::Figure.new
+      a.bar! @x1, @y1, @width, color: :blue
+      a.save 'file_name.bmp'
+
+      expect(equal_files('file_name.bmp', 'simple_bar.bmp')).to eq(true)
+    end
+  end
 end
