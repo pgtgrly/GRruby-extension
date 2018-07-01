@@ -26,8 +26,6 @@ module Rubyplot
     end
   end
 end
-
-
 =begin
 Known Bugs:
 

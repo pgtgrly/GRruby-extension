@@ -15,4 +15,4 @@ end
 
 require_relative './plots/line.rb'
 require_relative './plots/scatter.rb'
-require_relative './plots/bar.rb'
+#require_relative './plots/bar.rb'

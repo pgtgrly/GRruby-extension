@@ -74,7 +74,7 @@ module Rubyplot
         end
       end
 
-      class SetFillIntStyle
+      class SetFillInteriorStyle
         def initialize(style)
           @style = style
         end
@@ -255,7 +255,8 @@ module Rubyplot
         black: 1,
         blue: 257,
         green: 477,
-        red: 367
+        red: 367,
+        easy_blue: 989
       }.freeze
 
       GR_FONTS = {
@@ -352,6 +353,13 @@ module Rubyplot
         spaced_dot: -6,
         double_dot: -7,
         triple_dot: -8
+      }.freeze
+
+      GR_FILL_INTERIOR_STYLES = {
+        hollow: 0,
+        solid: 1,
+        pattern: 2,
+        hatch: 3
       }.freeze
     end
   end
