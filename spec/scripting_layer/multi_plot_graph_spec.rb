@@ -11,12 +11,12 @@ describe Rubyplot::Figure do
   context '#line! #scatter!' do
     it 'creates a line and scatter graph' do
       a = Rubyplot::Figure.new
-      a.title 'My cool graph'
+      a.title = 'My cool graph'
       a.line! @x1, @y1
       a.scatter! @x2, @y2
-      a.save 'file_name.bmp'
+      a.save 'spec/reference_images/file_name.bmp'
 
-      expect(equal_files('file_name.bmp', 'line_scatter_graph.bmp')).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'multi_plot_graph/line_scatter_graph.bmp',10)).to eq(true)
     end
   end
 end
