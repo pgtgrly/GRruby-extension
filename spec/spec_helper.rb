@@ -19,4 +19,4 @@ def compute_rms(test_image, reference_image)
     end
   end
   Math.sqrt(diff / (512 * 512))
- end
+end
