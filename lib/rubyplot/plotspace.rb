@@ -12,14 +12,21 @@ module Rubyplot
       @text_font = state.text_font
       @grid = state.grid
       @bounding_box = state.bounding_box
+      @x_axis_padding = state.x_axis_padding
+      @y_axis_padding = state.y_axis_padding
     end
 
     def set_axis! # for internal use before drawing
       #Automate tick sizes so that it is not too conjested
-      if @title != nil # GR framework requires axes to be set up before plotting
+      if !@title.nil? # GR framework requires axes to be set up before plotting
         @title_shift = 0.1 # only decrease the plotting area if title is present
       end
-      @x_axis_padding =  Math.log((@x_range[1] - @x_range[0]), 10).round
+
+      if @x_axis_padding == :default
+        @x_axis_padding =  Math.log((@x_range[1] - @x_range[0]), 10).round
+      end
+
+
       @y_axis_padding =  Math.log((@y_range[1] - @y_range[0]), 10).round
       SetViewPort.new(0.05, 0.99, 0.05, 0.99 - @title_shift).call
       SetWindow.new(@x_range[0] - @x_axis_padding, @x_range[1] + @x_axis_padding,

@@ -249,6 +249,38 @@ module Rubyplot
         end
       end
 
+      class DrawArc
+        def initialize(x_min, x_max, y_min, y_max, starting_angle, ending_angle)
+          @x_min = x_min
+          @x_max = x_max
+          @y_min = y_min
+          @y_max = y_max
+          @starting_angle = starting_angle
+          @ending_angle = ending_angle
+        end
+
+        def call
+          GR.drawarc(@x_min, @x_max, @y_min, @y_max, @starting_angle,
+                     @ending_angle)
+        end
+      end
+
+      class FillArc
+        def initialize(x_min, x_max, y_min, y_max, starting_angle, ending_angle)
+          @x_min = x_min
+          @x_max = x_max
+          @y_min = y_min
+          @y_max = y_max
+          @starting_angle = starting_angle
+          @ending_angle = ending_angle
+        end
+
+        def call
+          GR.fillarc(@x_min, @x_max, @y_min, @y_max, @starting_angle,
+                     @ending_angle)
+        end
+      end
+
       # Will define color index, fonts, marker types and other constants
       # color index between 1 to 1256. map all prominent ones here
       GR_COLOR_INDEX = {

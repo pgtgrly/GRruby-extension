@@ -57,13 +57,20 @@ module Rubyplot
                            marker_type: marker_type))
     end
 
-    def bar()
+    def bar!(data, base: :default ,bar_color: :default, bar_width: :default,
+             bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
+             bar_edge_width: :default)
       if @data_plot_flag
         puts("\nThe figure is of data plotting type")
         return
       else
         @data_represent_flag = true
       end
+
+      #data.min
+      Tasks.push(Bar.new(data, base, bar_color: :default, bar_width: :default,
+                         bar_gap: :default, bar_edge: :default,
+                         bar_edge_color: :default, bar_edge_width: :default))
     end
 
     def view
@@ -74,19 +81,5 @@ module Rubyplot
       Rubyplot::Plotspace.new(self).save!(file_name)
     end
 
-    def clear!
-      @tasks = []
-      @x_range = [0, 0]
-      @y_range = [0, 0]
-      @x_tick_count = :default
-      @y_tick_count = :default
-      @title = nil
-      @title_shift = 0
-      @text_font = :default
-      @grid = true
-      @bounding_box = true
-      @data_represent_flag = false
-      @data_plot_flag = false
-    end
   end
 end
