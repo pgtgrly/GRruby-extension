@@ -24,7 +24,7 @@ module Rubyplot
       @x_axis_padding = :default
       @y_axis_padding = :default
       if @backend == :default || @backend == :GR
-        require(__dir__.to_s << '/scripting_backends/gr_backend')
+        require(__dir__.to_s << '/scripting_backends/gr/gr_backend')
       end
     end
     def clear!
