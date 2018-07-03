@@ -16,8 +16,9 @@ describe Rubyplot::Figure do
       a.line! @x1, @y1
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp','single_plot_graph/line_graph.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp','single_plot_graph/' \
+                                     'line_graph.bmp',10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a line graph with points marked' do
@@ -25,8 +26,9 @@ describe Rubyplot::Figure do
       a.line! @x1, @y1, marker_size: 1
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp','single_plot_graph/line_marker_graph.bmp',
-                                      10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp','single_plot_graph/' \
+                                     'line_marker_graph.bmp',10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a red dashed line graph with points marked' do
@@ -34,8 +36,10 @@ describe Rubyplot::Figure do
       a.line! @x1, @y1, line_color: :red, line_type: :dashed
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp','single_plot_graph/dash_line_marker_graph.bmp',
+      expect(compare_with_reference?('file_name.bmp','single_plot_graph/' \
+                                     'dash_line_marker_graph.bmp',
                                      10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
   end
 
@@ -45,8 +49,9 @@ describe Rubyplot::Figure do
       a.scatter! @x1, @y1
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/scatter_graph.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'scatter_graph.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a green cross scatter graph' do
@@ -55,8 +60,9 @@ describe Rubyplot::Figure do
                            marker_type: :diagonal_cross
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/scatter_cross_graph.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'scatter_cross_graph.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
   end
 
@@ -67,8 +73,9 @@ describe Rubyplot::Figure do
       a.bar! @values
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/bar_graph.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                    'bar_graph.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a bar graph with red color bars' do
@@ -76,8 +83,9 @@ describe Rubyplot::Figure do
       a.bar! @values, bar_color: :red
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/red_bar_graph.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'red_bar_graph.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a bar graph with blue color bars with spaces' do
@@ -85,8 +93,10 @@ describe Rubyplot::Figure do
       a.bar! @values, bar_color: :blue
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/blue_spaced_bar_graph.bmp',
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'blue_spaced_bar_graph.bmp',
                                      10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
   end
 
@@ -96,8 +106,9 @@ describe Rubyplot::Figure do
       a.line_plot! @freqwise
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/line_plot.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'line_plot.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a line plot with red markers' do
@@ -105,17 +116,20 @@ describe Rubyplot::Figure do
       a.line_plot! @values, marker_color: :red, marker_size: 2
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/red_line_plot.bmp',
-                                     10)).to eq(true)
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'red_line_plot.bmp', 10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
 
     it 'creates a line plot with green solid bowtie markers' do
       a = Rubyplot::Figure.new
-      a.bar! @values, marker_color: :green, marker_type: :solid_bowtie
+      a.line_plot! @values, marker_color: :green, marker_type: :solid_bowtie
       a.save 'spec/reference_images/file_name.bmp'
 
-      expect(compare_with_reference?('file_name.bmp','single_plot_graph/green _bowtie_line_plot.bmp',
+      expect(compare_with_reference?('file_name.bmp','single_plot_graph/' \
+                                     'green _bowtie_line_plot.bmp',
                                      10)).to eq(true)
+      File.delete 'spec/reference_images/file_name.bmp'
     end
   end
 
