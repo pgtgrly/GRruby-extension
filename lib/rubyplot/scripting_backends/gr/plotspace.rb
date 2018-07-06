@@ -18,9 +18,7 @@ module Rubyplot
 
     def set_axis! # for internal use before drawing
       #Automate tick sizes so that it is not too conjested
-      if !@title.nil? # GR framework requires axes to be set up before plotting
-        @title_shift = 0.1 # only decrease the plotting area if title is present
-      end
+      @title_shift = 0.1 unless @title.nil?
 
       if @x_axis_padding == :default
         @x_axis_padding =  Math.log((@x_range[1] - @x_range[0]), 10).round

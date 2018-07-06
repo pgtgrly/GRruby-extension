@@ -47,5 +47,5 @@ module Rubyplot
 end
 =begin
 Known Bugs:
-
+# set yrange and xrange to nil, would require change in spec images and origin shift
 =end
