@@ -2,6 +2,7 @@ module Rubyplot
   class Plotspace
     include Rubyplot::GRWrapper::Tasks
     def initialize(state)
+      @state = state
       @tasks = state.tasks
       @x_range = state.x_range
       @y_range = state.y_range
@@ -21,7 +22,7 @@ module Rubyplot
       @title_shift = 0.1 unless @title.nil?
 
       if @x_axis_padding == :default
-        @x_axis_padding =  Math.log((@x_range[1] - @x_range[0]), 10).round
+        @x_axis_padding = Math.log((@x_range[1] - @x_range[0]), 10).round
       end
 
 
@@ -39,9 +40,9 @@ module Rubyplot
       SetCharHeight.new(0.012).call
       @y_tick_count = 10 if @y_tick_count == :default
       @x_tick_count = 10 if @x_tick_count == :default # 10 ticks by default
-      @tasks.push(SetLineColorIndex.new(GR_COLOR_INDEX[:black]))
-      @tasks.push(SetLineWidth.new(1))
-      @tasks.push(SetLineType.new(GR_LINE_TYPES[:solid]))
+      SetLineColorIndex.new(GR_COLOR_INDEX[:black]).call
+      SetLineWidth.new(1).call
+      SetLineType.new(GR_LINE_TYPES[:solid]).call
       Grid.new((@x_range[1] - @x_range[0]).to_f / @x_tick_count,
                (@y_range[1] - @y_range[0]).to_f / @y_tick_count,
                0, 0, 1, 1).call
@@ -56,7 +57,8 @@ module Rubyplot
     def view!
       set_axis!
       @tasks.each do |task|
-        task.call()
+        task.call() if task.plot_type == :robust
+        task.call(@state) if task.plot_type == :lazy
       end
       UpdateWorkspace.new.call
       puts("\nPress any button to continue")
@@ -68,7 +70,8 @@ module Rubyplot
       BeginPrint.new(file_name).call
       set_axis!
       @tasks.each do |task|
-        task.call()
+        task.call() if task.plot_type == :robust
+        task.call(@state) if task.plot_type == :lazy
       end
       EndPrint.new.call
     end

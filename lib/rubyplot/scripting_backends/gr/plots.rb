@@ -1,12 +1,24 @@
 module Rubyplot
   module Scripting
     module Plots
-      class Base
+      class RobustBase
         include Rubyplot::GRWrapper::Tasks
+        attr_reader :plot_type
+        def initialize
+          @plot_type = :robust
+        end
+
         def call
           @tasks.each do |task|
             task.call()
           end
+        end
+      end
+      class LazyBase # call function will be unique for every plot
+        include Rubyplot::GRWrapper::Tasks
+        attr_reader :plot_type
+        def initialize
+          @plot_type = :lazy
         end
       end
     end

@@ -1,13 +1,14 @@
 module Rubyplot
   module Scripting
     module Plots
-      class Line < Base
+      class Line < RobustBase
             # To do  declare constants for marker types and colours
             # Allow list of types and colours to be passed
-        def initialize(x_coordinates,y_coordinates, line_width: :default,
+        def initialize(x_coordinates, y_coordinates, line_width: :default,
                        line_color: :default, line_type: :default,
                        marker_size: :default, marker_color: :default,
                        marker_type: :default)
+          super()
           @tasks = []
           if marker_size != :default
             marker_color = :black if marker_color == :default
