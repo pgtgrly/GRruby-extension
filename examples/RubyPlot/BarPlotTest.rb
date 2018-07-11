@@ -1,5 +1,5 @@
 require_relative '../../lib/grruby'
-g = Rubyplot::Bar.new()
-g.title = 'My Bar My Rules!!!'
-g.data('data', [5, 12, 1, 6, 7])
-g.write('bar.bmp')
+values = [0, 24, 12, 48]
+a = Rubyplot::Figure.new
+a.bar! values
+a.view
