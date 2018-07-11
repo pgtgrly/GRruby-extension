@@ -20,8 +20,6 @@ module Rubyplot
       @text_font = :default
       @grid = true
       @bounding_box = true
-      @data_represent_flag = false
-      @data_plot_flag = false
       @x_axis_padding = :default
       @y_axis_padding = :default
       if @backend == :default || @backend == :GR
@@ -40,8 +38,6 @@ module Rubyplot
       @text_font = :default
       @grid = true
       @bounding_box = true
-      @data_represent_flag = false
-      @data_plot_flag = false
       @x_axis_padding = :default
       @y_axis_padding = :default
     end

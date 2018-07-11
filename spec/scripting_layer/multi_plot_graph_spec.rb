@@ -7,6 +7,9 @@ describe Rubyplot::Figure do
     @x2 = [2, 4, 16]
     @y2 = [10, 20, -40]
   end
+  after do
+    File.delete 'spec/reference_images/file_name.bmp'
+  end
 
   context '#line! #scatter!' do
     it 'creates a line and scatter graph' do
@@ -18,7 +21,6 @@ describe Rubyplot::Figure do
 
       expect(compare_with_reference?('file_name.bmp', 'multi_plot_graph/' \
                                      'line_scatter_graph.bmp',10)).to eq(true)
-      File.delete 'spec/reference_images/file_name.bmp'
     end
   end
 end
