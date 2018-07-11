@@ -52,9 +52,9 @@ module Rubyplot
       @y_range[1] = data.max if @y_range[1].nil?
       @y_range[0] = data.min if data.min < @y_range[0]
       @y_range[1] = data.max if data.max > @y_range[1]
-      @tasks.push(Bar.new(data, bar_color: :default, bar_width: :default,
-                         bar_gap: :default, bar_edge: :default,
-                         bar_edge_color: :default, bar_edge_width: :default))
+      @tasks.push(Bar.new(data, bar_color: bar_color, bar_width: bar_width,
+                         bar_gap: bar_gap, bar_edge: bar_edge,
+                         bar_edge_color: bar_edge_color, bar_edge_width: bar_edge_width))
     end
 
     def view

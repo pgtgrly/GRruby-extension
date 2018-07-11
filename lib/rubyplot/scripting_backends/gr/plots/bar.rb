@@ -7,12 +7,19 @@ module Rubyplot
                        bar_edge_color: :default, bar_edge_width: :default)
           super()
           @tasks = []
-          @bar_color = :easy_blue if bar_color == :default
-          @bar_gap = 0 if bar_gap == :default
-          @bar_width = 1 if bar_width == :default
-          @bar_edge = true if bar_edge == :default
-          @bar_edge_color = :black if bar_edge_color == :default
-          @bar_edge_width = 0.02 if bar_edge_width == :default
+          @bar_color = bar_color
+          @bar_gap = bar_gap
+          @bar_width = bar_width
+          @bar_edge = bar_edge
+          @bar_edge_color = bar_edge_color
+          @bar_edge_width = bar_edge_width
+
+          @bar_color = :easy_blue if @bar_color == :default
+          @bar_gap = 0 if @bar_gap == :default
+          @bar_width = 1 if @bar_width == :default
+          @bar_edge = true if @bar_edge == :default
+          @bar_edge_color = :black if @bar_edge_color == :default
+          @bar_edge_width = 0.02 if @bar_edge_width == :default
           @data = data
           # All this will be repurposed
         end
