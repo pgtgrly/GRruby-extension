@@ -17,9 +17,9 @@ module Rubyplot
           @bar_color = :easy_blue if @bar_color == :default
           @bar_gap = 0 if @bar_gap == :default
           @bar_width = 1 if @bar_width == :default
+          @bar_edge_width = 0.053 if @bar_edge_width == :default
           @bar_edge = true if @bar_edge == :default
           @bar_edge_color = :black if @bar_edge_color == :default
-          @bar_edge_width = 0.02 if @bar_edge_width == :default
           @data = data
           # All this will be repurposed
         end
@@ -34,14 +34,14 @@ module Rubyplot
               SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
               FillRectangle.new(i * (@bar_width + @bar_gap) - @bar_edge_width,
                            i * (@bar_width + @bar_gap) + @bar_width + @bar_edge_width,
-                           state.y_range[0] - state.y_axis_padding, @data[i] + @bar_edge_width).call
+                           state.origin[1], @data[i] + 2 * @bar_edge_width).call
             end
 
             SetFillColorIndex.new(GR_COLOR_INDEX[@bar_color]).call
             SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
             FillRectangle.new(i * (@bar_width + @bar_gap),
                          i * (@bar_width + @bar_gap) + @bar_width,
-                         state.y_range[0] - state.y_axis_padding, @data[i]).call
+                         state.origin[1], @data[i]).call
           end
         end
       end

@@ -9,10 +9,17 @@ module Rubyplot
       #Automate tick sizes so that it is not too conjested
       @state.title_shift = 0.1 unless @state.title.nil?
 
-      if @state.x_axis_padding == :default
-        @state.x_axis_padding = Math.log((@state.x_range[1] - @state.x_range[0]), 10).round
-      end
+      @state.x_axis_padding = Math.log((@state.x_range[1] - @state.x_range[0]), 10).round
       @state.y_axis_padding =  Math.log((@state.y_range[1] - @state.y_range[0]), 10).round
+
+      if @state.origin[0] == :default
+        @state.origin[0] = @state.x_range[0] - @state.x_axis_padding
+      end
+
+      if @state.origin[1] == :default
+        @state.origin[1] = @state.y_range[0] - @state.y_axis_padding
+      end
+
       SetViewPort.new(0.05, 0.99, 0.05, 0.99 - @state.title_shift).call
       SetWindow.new(@state.x_range[0] - @state.x_axis_padding, @state.x_range[1] + @state.x_axis_padding,
                     @state.y_range[0] - @state.y_axis_padding, @state.y_range[1] + @state.y_axis_padding).call

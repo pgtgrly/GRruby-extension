@@ -41,20 +41,25 @@ module Rubyplot
     end
 
     def bar!(data, bar_color: :default, bar_width: :default,
-             bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
-             bar_edge_width: :default)
+                   bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
+                   bar_edge_width: :default)
 
       @x_range[0] = 0 if @x_range[0].nil?
       @x_range[1] = data.length if @x_range[0].nil?
-      @x_range[1] = data.length if data.length > @x_range[1]
+      bar_gap = 0 if bar_gap == :default
+      bar_width = 1 if bar_width == :default
+      bar_edge_width = 0.03 if bar_edge_width == :default
+      x_length = data.length * (bar_width + bar_gap) + bar_width + bar_edge_width
+      @x_range[1] = x_length if x_length > @x_range[1]
 
       @y_range[0] = data.min if @y_range[0].nil?
       @y_range[1] = data.max if @y_range[1].nil?
       @y_range[0] = data.min if data.min < @y_range[0]
       @y_range[1] = data.max if data.max > @y_range[1]
       @tasks.push(Bar.new(data, bar_color: bar_color, bar_width: bar_width,
-                         bar_gap: bar_gap, bar_edge: bar_edge,
-                         bar_edge_color: bar_edge_color, bar_edge_width: bar_edge_width))
+                                bar_gap: bar_gap, bar_edge: bar_edge,
+                                bar_edge_color: bar_edge_color,
+                                bar_edge_width: bar_edge_width))
     end
 
     def view

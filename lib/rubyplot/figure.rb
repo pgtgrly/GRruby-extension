@@ -12,7 +12,7 @@ module Rubyplot
       @tasks = []
       @x_range = [0, 0]
       @y_range = [0, 0]
-      @origin = [0, 0]
+      @origin = [:default, :default]
       @x_tick_count = :default
       @y_tick_count = :default
       @title = nil
