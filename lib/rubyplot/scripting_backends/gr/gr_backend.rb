@@ -62,6 +62,30 @@ module Rubyplot
                                 bar_edge_width: bar_edge_width))
     end
 
+    def stacked_bar!(data, bar_colors, bar_width: :default,
+                   bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
+                   bar_edge_width: :default)
+
+      @x_range[0] = 0 if @x_range[0].nil?
+      @x_range[1] = data[0].length if @x_range[0].nil?
+      bar_gap = 0 if bar_gap == :default
+      bar_width = 1 if bar_width == :default
+      bar_edge_width = 0.03 if bar_edge_width == :default
+      x_length = data[0].length * (bar_width + bar_gap) + bar_width + bar_edge_width
+      @x_range[1] = x_length if x_length > @x_range[1]
+      puts @x_range[0]
+      @y_range[0] = data[0].min if @y_range[0].nil?
+      @y_range[1] = data[0].max if @y_range[1].nil?
+      data.each do |i|
+        @y_range[0] = i.min if i.min < @y_range[0]
+        @y_range[1] = i.max if i.max > @y_range[1]
+      end
+      @tasks.push(StackedBar.new(data, bar_colors, bar_width: bar_width,
+                                bar_gap: bar_gap, bar_edge: bar_edge,
+                                bar_edge_color: bar_edge_color,
+                                bar_edge_width: bar_edge_width))
+    end
+
     def view
       Rubyplot::Plotspace.new(self).view!
     end

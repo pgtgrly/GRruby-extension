@@ -25,7 +25,7 @@ module Rubyplot
         end
 
         def call(state)
-          # for Laazy plots the state has been passed  in the plotspace call
+          # for Lazy plots the state has been passed  in the plotspace call
           # every lazy plot will have a call function rather than inherting it
           # tasks wont be pushed, rather they will be instantiated and called directly
           (0..@data.size - 1).to_a.each do |i|
