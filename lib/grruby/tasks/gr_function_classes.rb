@@ -1,6 +1,12 @@
 module Rubyplot
   module GRWrapper
     module Tasks
+      def inqcolorfromrgb(rgbstring)
+        rgb = rgbstring.match /(..)(..)(..)/
+        GR.inqcolorfromrgb((rgb[1].hex/255).to_f, (rgb[2].hex/255).to_f, (rgb[3].hex/255).to_f)
+      end
+
+
       class BeginPrint
         attr_reader :file_name
 
@@ -288,7 +294,8 @@ module Rubyplot
         blue: 257,
         green: 477,
         red: 367,
-        easy_blue: 989
+        easy_blue: 989,
+        white: 91
       }.freeze
 
       GR_FONTS = {
