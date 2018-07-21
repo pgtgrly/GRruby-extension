@@ -7,7 +7,6 @@ module Rubyplot
         def initialize(x_coordinates, y_coordinates, marker_size: :default,
                        marker_color: :default, marker_type: :default)
           super()
-          @tasks = []
           marker_color = :black if marker_color == :default
           marker_size = 1 if marker_size == :default
           marker_type = :solid_circle if marker_type == :default

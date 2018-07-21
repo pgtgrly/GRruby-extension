@@ -9,6 +9,6 @@ t = [1]
   t << (t[-1] + 0.1)
 end
 a = Rubyplot::Figure.new
-a.bar! values, bar_color: :white, bar_gap: 1
+a.bar! values, bar_color: :green, bar_gap: 1
 a.line!(t, V)
 a.view

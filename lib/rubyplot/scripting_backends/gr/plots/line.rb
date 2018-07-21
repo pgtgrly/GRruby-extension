@@ -9,7 +9,6 @@ module Rubyplot
                        marker_size: :default, marker_color: :default,
                        marker_type: :default)
           super()
-          @tasks = []
           if marker_size != :default
             marker_color = :black if marker_color == :default
             marker_type = :solid_circle if marker_type == :default

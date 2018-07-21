@@ -7,7 +7,6 @@ module Rubyplot
                        bar_edge_color: :default, bar_edge_width: :default)
                        ## To Do add default Bar edge colors
           super()
-          @tasks = []
           @bar_colors = bar_colors
           @bar_gap = bar_gap
           @bar_width = bar_width

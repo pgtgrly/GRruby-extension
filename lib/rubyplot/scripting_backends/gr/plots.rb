@@ -5,6 +5,7 @@ module Rubyplot
         include Rubyplot::GRWrapper::Tasks
         attr_reader :plot_type
         def initialize
+          @tasks = []
           @plot_type = :robust
         end
 
@@ -29,3 +30,4 @@ require_relative './plots/line.rb'
 require_relative './plots/scatter.rb'
 require_relative './plots/bar.rb'
 require_relative './plots/stacked_bar.rb'
+require_relative './plots/candlestick.rb'

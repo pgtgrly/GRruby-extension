@@ -6,7 +6,6 @@ module Rubyplot
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)
           super()
-          @tasks = []
           @bar_color = bar_color
           @bar_gap = bar_gap
           @bar_width = bar_width
