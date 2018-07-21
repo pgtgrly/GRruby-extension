@@ -10,7 +10,7 @@ values = [[12, 4, 53, 24],
           [4, 34, 8, 25],
           [20, 9, 31, 2],
           [56, 12, 84, 30]]
-          colors = ["000000","00ffff","ff00ff","ff0000"]
+          colors = [:lavender,"#00ffff","#ff00ff","#ff0000"]
 g.stacked_bar! values, colors, bar_gap: 1
 g.line! @x1, @y1, line_width: 2,
                line_color: :red, line_type: :long_short_dash,
