@@ -31,7 +31,7 @@ module Rubyplot
       SetCharHeight.new(0.012).call
       @state.y_tick_count = 10 if @state.y_tick_count == :default
       @state.x_tick_count = 10 if @state.x_tick_count == :default # 10 ticks by default
-      SetLineColorIndex.new(GR_COLOR_INDEX[:black]).call
+      SetLineColorIndex.new(inqcolorfromrgb(COLOR_INDEX[:black])).call
       SetLineWidth.new(1).call
       SetLineType.new(GR_LINE_TYPES[:solid]).call
       Grid.new((@state.x_range[1] - @state.x_range[0]).to_f / @state.x_tick_count,
