@@ -12,6 +12,12 @@ describe Rubyplot::Figure do
   end
 
   context '#line! #scatter!' do
+    before do
+      @x1 = [-10, 0, 5, 28]
+      @y1 = [1, 2, 3, 4]
+      @x2 = [2, 4, 16]
+      @y2 = [10, 20, -40]
+    end
     it 'creates a line and scatter graph' do
       a = Rubyplot::Figure.new
       a.title = 'My cool graph'

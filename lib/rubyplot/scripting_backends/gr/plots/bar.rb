@@ -14,13 +14,13 @@ module Rubyplot
           @bar_edge_width = bar_edge_width
 
           @bar_color = COLOR_INDEX[:blue] if @bar_color == :default
-          @bar_color = COLOR_INDEX[marker_color] if @bar_color.is_a? Symbol
+          @bar_color = COLOR_INDEX[bar_color] if @bar_color.is_a? Symbol
           @bar_gap = 0 if @bar_gap == :default
           @bar_width = 1 if @bar_width == :default
           @bar_edge_width = 0.053 if @bar_edge_width == :default
           @bar_edge = true if @bar_edge == :default
           @bar_edge_color = COLOR_INDEX[:black] if @bar_edge_color == :default
-          @bar_edge_color = COLOR_INDEX[marker_color] if @bar_edge_color.is_a? Symbol
+          @bar_edge_color = COLOR_INDEX[bar_edge_color] if @bar_edge_color.is_a? Symbol
           @data = data
           # All this will be repurposed
         end

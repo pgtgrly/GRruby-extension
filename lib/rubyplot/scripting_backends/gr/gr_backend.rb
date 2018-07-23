@@ -62,7 +62,7 @@ module Rubyplot
                                 bar_edge_width: bar_edge_width))
     end
 
-    def stacked_bar!(data, bar_colors, bar_width: :default,
+    def stacked_bar_z!(data, bar_colors: :default, bar_width: :default,
                    bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
                    bar_edge_width: :default)
 
@@ -79,7 +79,28 @@ module Rubyplot
         @y_range[0] = i.min if i.min < @y_range[0]
         @y_range[1] = i.max if i.max > @y_range[1]
       end
-      @tasks.push(StackedBar.new(data, bar_colors, bar_width: bar_width,
+      @tasks.push(StackedBarZ.new(data,bar_colors: bar_colors, bar_width: bar_width,
+                                bar_gap: bar_gap, bar_edge: bar_edge,
+                                bar_edge_color: bar_edge_color,
+                                bar_edge_width: bar_edge_width))
+    end
+
+    def stacked_bar!(data, bar_colors: :default, bar_width: :default,
+                   bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
+                   bar_edge_width: :default)
+      # Return error if negative data
+      @x_range[0] = 0 if @x_range[0].nil?
+      @x_range[1] = data[0].length if @x_range[1].nil?
+      bar_gap = 0 if bar_gap == :default
+      bar_width = 1 if bar_width == :default
+      bar_edge_width = 0.03 if bar_edge_width == :default
+      x_length = data[0].length * (bar_width + bar_gap) + bar_width + bar_edge_width
+      @x_range[1] = x_length if x_length > @x_range[1]
+      summed_heights = data.transpose.map { |x| x.reduce(:+) }
+      @y_range[0] = 0 if @y_range[0].nil?
+      @y_range[1] = summed_heights.max if @y_range[1].nil?
+      @y_range[1] = summed_heights.max if summed_heights.max > @y_range[1]
+      @tasks.push(StackedBar.new(data,bar_colors: bar_colors, bar_width: bar_width,
                                 bar_gap: bar_gap, bar_edge: bar_edge,
                                 bar_edge_color: bar_edge_color,
                                 bar_edge_width: bar_edge_width))

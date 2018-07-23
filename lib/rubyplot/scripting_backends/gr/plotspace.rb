@@ -20,7 +20,7 @@ module Rubyplot
         @state.origin[1] = @state.y_range[0] - @state.y_axis_padding
       end
 
-      SetViewPort.new(0.05, 0.99, 0.05, 0.99 - @state.title_shift).call
+      SetViewPort.new(0.1, 0.99, 0.1, 0.99 - @state.title_shift).call
       SetWindow.new(@state.x_range[0] - @state.x_axis_padding, @state.x_range[1] + @state.x_axis_padding,
                     @state.y_range[0] - @state.y_axis_padding, @state.y_range[1] + @state.y_axis_padding).call
       # Make sure that window is set bigger than range figure out how to manage it
@@ -40,6 +40,7 @@ module Rubyplot
       Axes.new((@state.x_range[1] - @state.x_range[0]).to_f / @state.x_tick_count,
                (@state.y_range[1] - @state.y_range[0]).to_f / @state.y_tick_count,
                @state.origin[0], @state.origin[1], 1, 1, 0.01).call
+      AxesTitles.new(@state.x_title, @state.y_title,'').call
       if @state.title_shift != 0
         SetCharHeight.new(0.05).call
         Text.new(0.5, 0.9, @state.title).call
