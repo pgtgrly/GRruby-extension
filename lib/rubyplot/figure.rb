@@ -2,14 +2,17 @@ module Rubyplot
   class Figure
     include Rubyplot::Scripting::Plots
     include Rubyplot::GRWrapper::Tasks
-    attr_accessor :backend, :x_range, :y_range, :x_tick_count, :y_tick_count,
-                  :title, :text_font, :grid, :bounding_box, :x_axis_padding,
-                  :y_axis_padding, :origin, :title_shift
-    attr_reader :tasks, :title_shift
+    attr_accessor :backend, :x_title, :y_title, :x_range, :y_range,
+                  :x_tick_count, :y_tick_count, :title, :text_font, :grid,
+                  :bounding_box, :x_axis_padding, :y_axis_padding, :origin,
+                  :title_shift
+    attr_reader :tasks
 
     def initialize(backend: :default)
       @backend = backend
       @tasks = []
+      @x_title = ''
+      @y_title = ''
       @x_range = [0, 0]
       @y_range = [0, 0]
       @origin = [:default, :default]

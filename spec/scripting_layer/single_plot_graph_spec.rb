@@ -114,7 +114,7 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar! @bars_data, bar_colors: [:black, :red, :green, :blue]
+      a.stacked_bar! @bars_data,[:black, :red, :green, :blue]
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \

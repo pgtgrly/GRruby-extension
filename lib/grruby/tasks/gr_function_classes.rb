@@ -208,6 +208,18 @@ module Rubyplot
         end
       end
 
+      class AxesTitles
+        def initialize(x_title, y_title, z_title)
+          @x_title = x_title.to_s
+          @y_title = y_title.to_s
+          @z_title = z_title.to_s
+        end
+
+        def call
+          GR.titles3d(@x_title, @y_title, @z_title)
+        end
+      end
+
       class Axes
         def initialize(x_major_tick, y_major_tick, x_origin, y_origin, major_x,
                        major_y, tick_size)
@@ -289,7 +301,30 @@ module Rubyplot
 
       # Will define color index, fonts, marker types and other constants
       # color index between 1 to 1256. map all prominent ones here
-      CONTRASTING_COLORS = []
+      CONTRASTING_COLORS =
+        [
+          '#e6194b',
+          '#3cb44b',
+          '#ffe119',
+          '#0082c8',
+          '#f58231',
+          '#911eb4',
+          '#46f0f0',
+          '#f032e6',
+          '#d2f53c',
+          '#fabebe',
+          '#008080',
+          '#e6beff',
+          '#aa6e28',
+          '#fffac8',
+          '#800000',
+          '#aaffc3',
+          '#808000',
+          '#ffd8b1',
+          '#000080',
+          '#808080'
+        ].freeze
+
       COLOR_INDEX = {
         cloudy_blue: '#acc2d9',
         dark_pastel_green: '#56ae57',

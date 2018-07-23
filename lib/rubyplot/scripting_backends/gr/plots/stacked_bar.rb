@@ -2,7 +2,7 @@ module Rubyplot
   module Scripting
     module Plots
       class StackedBar < LazyBase
-        def initialize(data, bar_colors, bar_width: :default,
+        def initialize(data, bar_colors: :default, bar_width: :default,
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)
                        ## To Do add default Bar edge colors
@@ -18,6 +18,8 @@ module Rubyplot
           @bar_width = 1 if @bar_width == :default
           @bar_edge_width = 0.053 if @bar_edge_width == :default
           @bar_edge = true if @bar_edge == :default
+          @bar_edge = true if @bar_edge == :default
+          @bar_colors = CONTRASTING_COLORS if @bar_colors == :default
           @bar_edge_color = COLOR_INDEX[:black] if @bar_edge_color == :default
           @bar_edge_color = COLOR_INDEX[marker_color] if @bar_edge_color.is_a? Symbol
           @data = data
@@ -29,24 +31,29 @@ module Rubyplot
           # every lazy plot will have a call function rather than inherting it
           # tasks wont be pushed, rather they will be instantiated and called directly
           (0..@data[0].size - 1).to_a.each do |i|
-            bar_heights = @data.map{|row| row[i]}
-            order = bar_heights.map.with_index.sort.map(&:last).reverse
-            bar_heights = bar_heights.sort.reverse
-            (0..bar_heights.size-1).to_a.each do |j|
+            base = state.origin[1]
+            bars = @data.map{|row| row[i]}
+            (0..bars.size-1).to_a.each do |j|
               if @bar_edge
                 SetFillColorIndex.new(inqcolorfromrgb(@bar_edge_color)).call
                 SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
                 FillRectangle.new(i * (@bar_width + @bar_gap) - @bar_edge_width,
-                             i * (@bar_width + @bar_gap) + @bar_width + @bar_edge_width,
-                             state.origin[1], bar_heights[j] + 2 * @bar_edge_width).call
+                                  i * (@bar_width + @bar_gap) + @bar_width + @bar_edge_width,
+                                  base, base + bars[j] + 2 * @bar_edge_width).call
               end
-              bar_color = @bar_colors[order[j]]
+<<<<<<< HEAD
+              bar_color = @bar_colors[j]
               bar_color = COLOR_INDEX[bar_color] if bar_color.is_a? Symbol
+=======
+              bar_color = @bar_colors[order[j]]
+              bar_color = COLOR_INDEX[marker_color] if bar_color.is_a? Symbol
+>>>>>>> 56240da... Added color Symbols and hex-symbol color implementation for all the graphs
               SetFillColorIndex.new(inqcolorfromrgb(bar_color)).call
               SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
               FillRectangle.new(i * (@bar_width + @bar_gap),
-                           i * (@bar_width + @bar_gap) + @bar_width,
-                           state.origin[1], bar_heights[j]).call
+                                i * (@bar_width + @bar_gap) + @bar_width,
+                                base, base + bars[j]).call
+              base += bars[j]
             end
           end
         end
