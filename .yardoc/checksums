@@ -1,0 +1,14 @@
+lib/grruby.rb 5f9c1fa7d27cfeb51b98c146bcbc88e4d9fe7b49
+lib/rubyplot/figure.rb 83a9254b116068a721570ce0ffe91f1e675dc66d
+lib/grruby/tasks/gr_function_classes.rb bc30acd8fd215bedc5cc79cbced773698503effa
+lib/rubyplot/scripting_backends/gr/plots.rb 0f9144864db0f775cec29e5eaadbbfa9d50a8cea
+lib/rubyplot/scripting_backends/gr/plots/bar.rb 6435e41feec3265d4075363c82a558fcd0bca06c
+lib/rubyplot/scripting_backends/gr/plotspace.rb d4eaebe48927e994f5eb2d56de68ea217fe89158
+lib/rubyplot/scripting_backends/gr/gr_backend.rb 85bce657f9a06850d6824fd181e159245301ffe0
+lib/rubyplot/scripting_backends/gr/plots/line.rb cd5b4c9c9ba839ebf58c84a8f85a81048aec0e8f
+lib/rubyplot/scripting_backends/gr/plots/scatter.rb 4070268e5fae2ccaa76387bf70f1af21dd3cc82c
+lib/rubyplot/scripting_backends/gr/plots/candlestick.rb aecb01602a26525d252723d31b1da9e77b259849
+lib/rubyplot/scripting_backends/gr/plots/stacked_bar.rb d6825fcc62a4147434b7d43c06e8f4184faef39f
+lib/rubyplot/scripting_backends/gr/plots/stacked_bar_z.rb 3276470d7fa006341e82c252df3e2ad009eb0de9
+ext/grruby/grruby.c 715573cd6ca413a46b94c973996efa9d6e37bd6b
+ext/grruby/GR_Libraries/GR.c 77eebbd3618cd008b26971dfed82f244eedd6bc3

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Rubyplot::Scripting::Plots::Candlestick
+  
+    &mdash; Documentation by YARD 0.9.15
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Rubyplot::Scripting::Plots::Candlestick";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Rubyplot.html" title="Rubyplot (module)">Rubyplot</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Scripting.html" title="Rubyplot::Scripting (module)">Scripting</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Plots.html" title="Rubyplot::Scripting::Plots (module)">Plots</a></span></span>
+     &raquo; 
+    <span class="title">Candlestick</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Rubyplot::Scripting::Plots::Candlestick
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="BasePlots/RobustBase.html" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase (class)">BasePlots::RobustBase</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="BasePlots/RobustBase.html" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase (class)">BasePlots::RobustBase</a></span></li>
+          
+            <li class="next">Rubyplot::Scripting::Plots::Candlestick</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/rubyplot/scripting_backends/gr/plots/candlestick.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../../Color.html" title="Rubyplot::Color (module)">Color</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">Color::COLOR_INDEX</a></span>, <span class='object_link'><a href="../../Color.html#CONTRASTING_COLORS-constant" title="Rubyplot::Color::CONTRASTING_COLORS (constant)">Color::CONTRASTING_COLORS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../../GRWrapper/Tasks.html" title="Rubyplot::GRWrapper::Tasks (module)">GRWrapper::Tasks</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_FILL_INTERIOR_STYLES-constant" title="Rubyplot::GRWrapper::Tasks::GR_FILL_INTERIOR_STYLES (constant)">GRWrapper::Tasks::GR_FILL_INTERIOR_STYLES</a></span>, <span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_FONTS-constant" title="Rubyplot::GRWrapper::Tasks::GR_FONTS (constant)">GRWrapper::Tasks::GR_FONTS</a></span>, <span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_FONT_PRECISION-constant" title="Rubyplot::GRWrapper::Tasks::GR_FONT_PRECISION (constant)">GRWrapper::Tasks::GR_FONT_PRECISION</a></span>, <span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_LINE_TYPES-constant" title="Rubyplot::GRWrapper::Tasks::GR_LINE_TYPES (constant)">GRWrapper::Tasks::GR_LINE_TYPES</a></span>, <span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_MARKER_SHAPES-constant" title="Rubyplot::GRWrapper::Tasks::GR_MARKER_SHAPES (constant)">GRWrapper::Tasks::GR_MARKER_SHAPES</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="BasePlots/RobustBase.html" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase (class)">BasePlots::RobustBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="BasePlots/RobustBase.html#plot_type-instance_method" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase#plot_type (method)">#plot_type</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(open_, high, low, close_, bar_gap, bar_width, up_color: :default, down_color: :default, up_line_color: :default, down_line_color: :default)  &#x21d2; Candlestick </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>To do  declare constants for marker types and colours Allow list of types
+and colours to be passed.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="BasePlots/RobustBase.html" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase (class)">BasePlots::RobustBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="BasePlots/RobustBase.html#call-instance_method" title="Rubyplot::Scripting::Plots::BasePlots::RobustBase#call (method)">#call</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../GRWrapper/Tasks.html" title="Rubyplot::GRWrapper::Tasks (module)">GRWrapper::Tasks</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../GRWrapper/Tasks.html#inqcolorfromrgb-instance_method" title="Rubyplot::GRWrapper::Tasks#inqcolorfromrgb (method)">#inqcolorfromrgb</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(open_, high, low, close_, bar_gap, bar_width, up_color: :default, down_color: :default, up_line_color: :default, down_line_color: :default)  &#x21d2; <tt><span class='object_link'><a href="" title="Rubyplot::Scripting::Plots::Candlestick (class)">Candlestick</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>To do  declare constants for marker types and colours Allow list of types
+and colours to be passed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rubyplot/scripting_backends/gr/plots/candlestick.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_open_'>open_</span><span class='comma'>,</span> <span class='id identifier rubyid_high'>high</span><span class='comma'>,</span> <span class='id identifier rubyid_low'>low</span><span class='comma'>,</span> <span class='id identifier rubyid_close_'>close_</span><span class='comma'>,</span> <span class='id identifier rubyid_bar_gap'>bar_gap</span><span class='comma'>,</span> <span class='id identifier rubyid_bar_width'>bar_width</span><span class='comma'>,</span>
+               <span class='label'>up_color:</span> <span class='symbol'>:default</span><span class='comma'>,</span> <span class='label'>down_color:</span> <span class='symbol'>:default</span><span class='comma'>,</span>
+               <span class='label'>up_line_color:</span> <span class='symbol'>:default</span><span class='comma'>,</span> <span class='label'>down_line_color:</span> <span class='symbol'>:default</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_up_color'>up_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='symbol'>:green</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_up_color'>up_color</span> <span class='op'>==</span> <span class='symbol'>:default</span>
+  <span class='id identifier rubyid_up_color'>up_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_up_color'>up_color</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_up_color'>up_color</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span>
+  <span class='id identifier rubyid_down_color'>down_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='symbol'>:red</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_down_color'>down_color</span> <span class='op'>==</span> <span class='symbol'>:default</span>
+  <span class='id identifier rubyid_down_color'>down_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_down_color'>down_color</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_down_color'>down_color</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span>
+  <span class='id identifier rubyid_up_line_color'>up_line_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='symbol'>:black</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_up_line_color'>up_line_color</span> <span class='op'>==</span> <span class='symbol'>:default</span>
+  <span class='id identifier rubyid_up_line_color'>up_line_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_up_line_color'>up_line_color</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_up_line_color'>up_line_color</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span>
+  <span class='id identifier rubyid_down_line_color'>down_line_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='symbol'>:black</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_down_line_color'>down_line_color</span> <span class='op'>==</span> <span class='symbol'>:default</span>
+  <span class='id identifier rubyid_down_line_color'>down_line_color</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Color.html#COLOR_INDEX-constant" title="Rubyplot::Color::COLOR_INDEX (constant)">COLOR_INDEX</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_down_line_color'>down_line_color</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_down_line_color'>down_line_color</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span>
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='id identifier rubyid_open_'>open_</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_close_'>close_</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_open_'>open_</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_bar_color'>bar_color</span> <span class='op'>=</span> <span class='id identifier rubyid_up_color'>up_color</span>
+      <span class='id identifier rubyid_line_color'>line_color</span> <span class='op'>=</span> <span class='id identifier rubyid_up_line_color'>up_line_color</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_bar_color'>bar_color</span> <span class='op'>=</span> <span class='id identifier rubyid_down_color'>down_color</span>
+      <span class='id identifier rubyid_line_color'>line_color</span> <span class='op'>=</span> <span class='id identifier rubyid_down_line_color'>down_line_color</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_x_coord'>x_coord</span> <span class='op'>=</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_bar_width'>bar_width</span> <span class='op'>+</span> <span class='id identifier rubyid_bar_gap'>bar_gap</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_bar_width'>bar_width</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='op'>/</span><span class='int'>2</span>
+    <span class='ivar'>@tasks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks/SetLineColorIndex.html" title="Rubyplot::GRWrapper::Tasks::SetLineColorIndex (class)">SetLineColorIndex</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../GRWrapper/Tasks/SetLineColorIndex.html#initialize-instance_method" title="Rubyplot::GRWrapper::Tasks::SetLineColorIndex#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_inqcolorfromrgb'>inqcolorfromrgb</span><span class='lparen'>(</span><span class='id identifier rubyid_line_color'>line_color</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='ivar'>@tasks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks/Polyline.html" title="Rubyplot::GRWrapper::Tasks::Polyline (class)">Polyline</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../GRWrapper/Tasks/Polyline.html#initialize-instance_method" title="Rubyplot::GRWrapper::Tasks::Polyline#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_x_coord'>x_coord</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='int'>2</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_low'>low</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_high'>high</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='ivar'>@tasks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks/SetFillColorIndex.html" title="Rubyplot::GRWrapper::Tasks::SetFillColorIndex (class)">SetFillColorIndex</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../GRWrapper/Tasks/SetFillColorIndex.html#initialize-instance_method" title="Rubyplot::GRWrapper::Tasks::SetFillColorIndex#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_inqcolorfromrgb'>inqcolorfromrgb</span><span class='lparen'>(</span><span class='id identifier rubyid_bar_color'>bar_color</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='ivar'>@tasks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks/SetFillInteriorStyle.html" title="Rubyplot::GRWrapper::Tasks::SetFillInteriorStyle (class)">SetFillInteriorStyle</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../GRWrapper/Tasks/SetFillInteriorStyle.html#initialize-instance_method" title="Rubyplot::GRWrapper::Tasks::SetFillInteriorStyle#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks.html#GR_FILL_INTERIOR_STYLES-constant" title="Rubyplot::GRWrapper::Tasks::GR_FILL_INTERIOR_STYLES (constant)">GR_FILL_INTERIOR_STYLES</a></span></span><span class='lbracket'>[</span><span class='symbol'>:solid</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='ivar'>@tasks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../GRWrapper/Tasks/FillRectangle.html" title="Rubyplot::GRWrapper::Tasks::FillRectangle (class)">FillRectangle</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../GRWrapper/Tasks/FillRectangle.html#initialize-instance_method" title="Rubyplot::GRWrapper::Tasks::FillRectangle#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_bar_width'>bar_width</span> <span class='op'>+</span> <span class='id identifier rubyid_bar_gap'>bar_gap</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_bar_width'>bar_width</span> <span class='op'>+</span> <span class='id identifier rubyid_bar_gap'>bar_gap</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_bar_width'>bar_width</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_open_'>open_</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_close_'>close_</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+</div>
+
+      <div id="footer">
+  Generated on Wed Jul 25 00:23:47 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.15 (ruby-2.3.1).
+</div>
+
+    </div>
+  </body>
+</html>

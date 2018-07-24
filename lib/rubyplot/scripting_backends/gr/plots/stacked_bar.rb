@@ -1,7 +1,7 @@
 module Rubyplot
   module Scripting
     module Plots
-      class StackedBar < LazyBase
+      class StackedBar < BasePlots::LazyBase
         def initialize(data, bar_colors: :default, bar_width: :default,
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)
@@ -41,13 +41,8 @@ module Rubyplot
                                   i * (@bar_width + @bar_gap) + @bar_width + @bar_edge_width,
                                   base, base + bars[j] + 2 * @bar_edge_width).call
               end
-<<<<<<< HEAD
               bar_color = @bar_colors[j]
               bar_color = COLOR_INDEX[bar_color] if bar_color.is_a? Symbol
-=======
-              bar_color = @bar_colors[order[j]]
-              bar_color = COLOR_INDEX[marker_color] if bar_color.is_a? Symbol
->>>>>>> 56240dadb14aa978faf67782933b8bb8edbb1f64
               SetFillColorIndex.new(inqcolorfromrgb(bar_color)).call
               SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
               FillRectangle.new(i * (@bar_width + @bar_gap),
