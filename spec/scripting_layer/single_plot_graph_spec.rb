@@ -83,13 +83,13 @@ describe Rubyplot::Figure do
                                      'red_bar_graph.bmp', 10)).to eq(true)
     end
 
-    it 'creates a bar graph with blue color bars with spaces' do
+    it 'creates a bar graph with orange color bars with spaces' do
       a = Rubyplot::Figure.new
-      a.bar! @values, bar_color: :blue
+      a.bar! @values, bar_color: :orange, bar_gap: 1
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'blue_spaced_bar_graph.bmp',
+                                     'orange_spaced_bar_graph.bmp',
                                      10)).to eq(true)
     end
   end
@@ -114,7 +114,7 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar! @bars_data,[:black, :red, :green, :blue]
+      a.stacked_bar! @bars_data,bar_colors: [:black, :red, :green, :blue]
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \

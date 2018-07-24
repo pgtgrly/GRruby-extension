@@ -1,7 +1,7 @@
 module Rubyplot
   module Scripting
     module Plots
-      class StackedBarZ < LazyBase
+      class StackedBarZ < BasePlots::LazyBase
         def initialize(data, bar_colors: :default, bar_width: :default,
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)
@@ -20,11 +20,7 @@ module Rubyplot
           @bar_edge = true if @bar_edge == :default
           @bar_colors = CONTRASTING_COLORS if @bar_colors == :default
           @bar_edge_color = COLOR_INDEX[:black] if @bar_edge_color == :default
-<<<<<<< HEAD
-          @bar_edge_color = COLOR_INDEX[bar_edge_color] if @bar_edge_color.is_a? Symbol
-=======
           @bar_edge_color = COLOR_INDEX[marker_color] if @bar_edge_color.is_a? Symbol
->>>>>>> fa09d6f01eaa3723220ee0416e84a79672afbb9c
           @data = data
           # All this will be repurposed
         end

@@ -3,3 +3,5 @@
 *.bmp
 !spec/**
 tmp/
+doc/
+.yardoc/

@@ -1,7 +1,7 @@
 module Rubyplot
   module Scripting
     module Plots
-      class Scatter < RobustBase
+      class Scatter < BasePlots::RobustBase
         # To do  declare constants for marker types and colours
         # Allow list of types and colours to be passed
         def initialize(x_coordinates, y_coordinates, marker_size: :default,

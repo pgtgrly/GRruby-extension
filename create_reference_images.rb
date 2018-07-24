@@ -88,7 +88,7 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar! @bars_data, [:black, :red, :green, :blue]
+      a.stacked_bar! @bars_data, bar_colors: [:black, :red, :green, :blue]
       a.save 'spec/reference_images/single_plot_graph/user_color_stacked_bar_graph.bmp'
     end
   end

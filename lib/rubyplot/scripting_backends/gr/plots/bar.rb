@@ -1,7 +1,7 @@
 module Rubyplot
   module Scripting
     module Plots
-      class Bar < LazyBase
+      class Bar < BasePlots::LazyBase
         def initialize(data, bar_color: :default, bar_width: :default,
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)

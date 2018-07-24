@@ -1,6 +1,7 @@
 module Rubyplot
   class Plotspace
     include Rubyplot::GRWrapper::Tasks
+    include Rubyplot::Color
     def initialize(state)
       @state = state
     end
