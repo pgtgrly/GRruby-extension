@@ -1,7 +1,14 @@
 require "../../lib/grruby.rb"
-GR.setviewport(0.1, 0.95, 0.1, 0.95)
+GR.setviewport(0, 0.5, 0.1, 0.95)
 GR.setwindow(-10, 10, -10, 10)
-GR.setspace(-0.5, 0.5, 0, 90)
+GR.axes(1, 1, 0.0, 0.0, 1, 1, 0.01)
+GR.setviewport(0.5, 0.95, 0.1, 0.95)
+GR.setwindow(-20, 50, -20, 50)
+GR.axes(5, 5, 0.0, 0.0, 1, 1, 0.01)
+GR.updatews()
+puts("done")
+hold=gets
+#GR.setspace(-0.5, 0.5, 0, 90)
 GR.setmarkersize(1.0)
 GR.setmarkertype(-1)
 GR.settextalign(2, 0)
@@ -18,7 +25,7 @@ while j<50
   GR.setcharheight(0.012)
   GR.axes(1, 1, 0.0, 0.0, 1, 1, 0.01)
   GR.updatews()
-  while (i<10) do 
+  while (i<10) do
     x.insert(-1,x[-1]+1*(-1)**j)
     y.insert(-1,y[-1]*1.5)
     if x.size >2 and y.size >2
@@ -28,7 +35,7 @@ while j<50
     GR.polymarker(x,y)
     sleep(0.5)
     GR.updatews()
-    i+=1    
+    i+=1
   end
   sleep(1)
   GR.clearws()

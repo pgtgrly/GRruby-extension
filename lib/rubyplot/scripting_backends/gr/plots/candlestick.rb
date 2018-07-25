@@ -25,9 +25,9 @@ module Rubyplot
               line_color = down_line_color
             end
             x_coord = i * (bar_width + bar_gap) + bar_width.to_f/2
-            @tasks.push(SetLineColorIndex.new(inqcolorfromrgb(line_color)))
+            @tasks.push(SetLineColorIndex.new(hex_color_to_gr_color_index(line_color)))
             @tasks.push(Polyline.new([x_coord] * 2, [low[i], high[i]]))
-            @tasks.push(SetFillColorIndex.new(inqcolorfromrgb(bar_color)))
+            @tasks.push(SetFillColorIndex.new(hex_color_to_gr_color_index(bar_color)))
             @tasks.push(SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]))
             @tasks.push(FillRectangle.new(i * (bar_width + bar_gap),
                          i * (bar_width + bar_gap) + bar_width,

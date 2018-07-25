@@ -20,7 +20,7 @@ module Rubyplot
           @bar_edge = true if @bar_edge == :default
           @bar_colors = CONTRASTING_COLORS if @bar_colors == :default
           @bar_edge_color = COLOR_INDEX[:black] if @bar_edge_color == :default
-          @bar_edge_color = COLOR_INDEX[marker_color] if @bar_edge_color.is_a? Symbol
+          @bar_edge_color = COLOR_INDEX[@bar_edge_color] if @bar_edge_color.is_a? Symbol
           @data = data
           # All this will be repurposed
         end
@@ -35,7 +35,7 @@ module Rubyplot
             bar_heights = bar_heights.sort.reverse
             (0..bar_heights.size-1).to_a.each do |j|
               if @bar_edge
-                SetFillColorIndex.new(inqcolorfromrgb(@bar_edge_color)).call
+                SetFillColorIndex.new(hex_color_to_gr_color_index(@bar_edge_color)).call
                 SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
                 FillRectangle.new(i * (@bar_width + @bar_gap) - @bar_edge_width,
                              i * (@bar_width + @bar_gap) + @bar_width + @bar_edge_width,
@@ -43,7 +43,7 @@ module Rubyplot
               end
               bar_color = @bar_colors[order[j]]
               bar_color = COLOR_INDEX[bar_color] if bar_color.is_a? Symbol
-              SetFillColorIndex.new(inqcolorfromrgb(bar_color)).call
+              SetFillColorIndex.new(hex_color_to_gr_color_index(bar_color)).call
               SetFillInteriorStyle.new(GR_FILL_INTERIOR_STYLES[:solid]).call
               FillRectangle.new(i * (@bar_width + @bar_gap),
                            i * (@bar_width + @bar_gap) + @bar_width,

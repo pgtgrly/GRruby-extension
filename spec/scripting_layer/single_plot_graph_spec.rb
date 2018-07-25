@@ -123,10 +123,39 @@ describe Rubyplot::Figure do
     end
   end
 
+  context '#stacked_bar_z!' do
+    before do
+      @bars_data = [[12, 4, 53, 24],
+                    [4, 34, 8, 25],
+                    [20, 9, 31, 2],
+                    [56, 12, 84, 30]]
+    end
+
+    it 'creates a stacked bar Z graph' do
+      a = Rubyplot::Figure.new
+      a.stacked_bar_z! @bars_data
+      a.save 'spec/reference_images/file_name.bmp'
+
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'stacked_bar_z_graph.bmp',
+                                     10)).to eq(true)
+    end
+
+    it 'creates a stacked bar Z graph with user defined colors' do
+      a = Rubyplot::Figure.new
+      a.stacked_bar! @bars_data,bar_colors: [:black, :red, :green, :blue]
+      a.save 'spec/reference_images/file_name.bmp'
+
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'user_color_stacked_bar_z_graph.bmp',
+                                     10)).to eq(true)
+    end
+  end
+
   context '#line_plot!' do
     it 'creates a simple line plot' do
       a = Rubyplot::Figure.new
-      a.line_plot! @freqwise
+      a.line_plot_z! @freqwise
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
