@@ -1,7 +1,7 @@
 module Rubyplot
   module GRWrapper
     module Tasks
-      def inqcolorfromrgb(rgbstring)
+      def hex_color_to_gr_color_index(rgbstring)
         rgb = rgbstring.match /#(..)(..)(..)/
         GR.inqcolorfromrgb((rgb[1].hex.to_f/255.0), (rgb[2].hex.to_f/255.0), (rgb[3].hex.to_f/255.0))
       end

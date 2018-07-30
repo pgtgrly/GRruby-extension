@@ -1,10 +1,16 @@
 require "../../lib/grruby.rb"
+x1 = [-10, 0, 5, 28]
+      y1 = [1, 2, 3, 4]
+      x2 = [2, 4, 16]
+      y2 = [10, 20, -40]
 GR.setviewport(0, 0.5, 0.1, 0.95)
 GR.setwindow(-10, 10, -10, 10)
 GR.axes(1, 1, 0.0, 0.0, 1, 1, 0.01)
-GR.setviewport(0.5, 0.95, 0.1, 0.95)
-GR.setwindow(-20, 50, -20, 50)
+GR.polyline(x1,y1)
+GR.setviewport(0.6, 0.95, 0.1, 0.95)
+GR.setwindow(0, 20, -40, 30)
 GR.axes(5, 5, 0.0, 0.0, 1, 1, 0.01)
+GR.polymarker(x2,y2)
 GR.updatews()
 puts("done")
 hold=gets
