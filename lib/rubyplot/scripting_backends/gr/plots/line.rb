@@ -18,7 +18,7 @@ module Rubyplot
             @tasks.push(SetMarkerType.new(GR_MARKER_SHAPES[marker_type]))
             @tasks.push(Polymarker.new(x_coordinates, y_coordinates))
           end
-          line_color = COLOR_INDEX[:green] if line_color == :default
+          line_color = COLOR_INDEX[:black] if line_color == :default
           line_color = COLOR_INDEX[line_color] if line_color.is_a? Symbol
           line_width = 1 if line_width == :default
           line_type = :solid if line_type == :default

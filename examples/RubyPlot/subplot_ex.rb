@@ -17,11 +17,11 @@ a.subplot!(2, 2, 1)
 a.line! @x1, @y1, marker_size: 1
 a.scatter! @x2, @y2
 a.subplot!(2, 2, 2)
-a.scatter! @x2, @y2
+a.bar! @values, bar_color: :orange, bar_gap: 1
 a.subplot!(2, 2, 3)
 a.line! @x1, @y1, line_color: :red, line_type: :dashed
 a.subplot!(2, 2, 4)
 a.candlestick! @open, @high, @low, @close, up_color: :blue, down_color: :black
-#a.subplot!(2, 2, 3)
-#a.bar! @values, bar_color: :orange, bar_gap: 1
+a.subplot!(2, 2, 2)
+a.scatter! @x2, @y2
 a.view

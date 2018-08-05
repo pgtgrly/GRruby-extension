@@ -8,7 +8,6 @@ module Rubyplot
                   :title_shift, :tasks
     attr_reader :identity
     def initialize(num_rows, num_columns, index)
-      puts identity
       @identity = [num_rows, num_columns, index]
       @tasks = []
       @x_title = ''
@@ -25,13 +24,6 @@ module Rubyplot
       @bounding_box = true
       @x_axis_padding = :default
       @y_axis_padding = :default
-      @xmin, @xmax, @ymin, @ymax = 1, 0, 1, 0
-      r = @identity[0].to_f - (@identity[2].to_f - 1) / @identity[1].to_f
-      c = (@identity[2].to_f - 1) % @identity[1].to_f + 1
-      @xmin = [@xmin, (c - 1) / @identity[1].to_f].min
-      @xmax = [@xmax, c / @identity[1].to_f].max
-      @ymin = [@ymin, (r - 1) / @identity[0].to_f].min
-      @ymax = [@ymax, r / @identity[0].to_f].max
     end
 
     def clear!
@@ -52,6 +44,13 @@ module Rubyplot
       @y_axis_padding = :default
     end
     def call
+      r = (@identity[2].to_f / @identity[1].to_f).ceil
+      c = (@identity[2] % @identity[1]).zero? ? @identity[1] : @identity[2] % @identity[1]
+      @ymax = 1 - (1.to_f / @identity[0]) * (r - 1) - 0.095 / @identity[0]
+      @ymin = 1 - (1.to_f / @identity[0]) * r + 0.095 / @identity[0]
+      @xmin = (1.to_f / @identity[1]) * (c - 1) + 0.095 / @identity[1]
+      @xmax = (1.to_f / @identity[1]) * c - 0.095 / @identity[1]
+
       @x_axis_padding = Math.log((@x_range[1] - @x_range[0]), 10).round
       @y_axis_padding =  Math.log((@y_range[1] - @y_range[0]), 10).round
 
@@ -62,7 +61,6 @@ module Rubyplot
       if @origin[1] == :default
         @origin[1] = @y_range[0] - @y_axis_padding
       end
-      puts [@xmin, @xmax, @ymin, @ymax]
       SetViewPort.new(@xmin, @xmax, @ymin, @ymax).call
       SetWindow.new(@x_range[0] - @x_axis_padding, @x_range[1] + @x_axis_padding,
                     @y_range[0] - @y_axis_padding, @y_range[1] + @y_axis_padding).call

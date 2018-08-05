@@ -3,14 +3,14 @@ module Rubyplot
     include Rubyplot::Scripting::Plots
     include Rubyplot::GRWrapper::Tasks
     attr_accessor :backend, :x_title, :y_title, :x_range, :y_range,
-                  :x_tick_count, :y_tick_count, :title, :text_font, :grid,
+                  :x_tick_count, :y_tick_count, :text_font, :grid,
                   :bounding_box, :x_axis_padding, :y_axis_padding, :origin,
                   :title_shift, :subplots_list
     attr_reader :tasks
 
     def initialize(backend: :default)
       @backend = backend
-      @subplots_list = []
+      @subplots_list = [Rubyplot::SubPlot.new(1, 1, 1)]
       @tasks = []
       @x_title = ''
       @y_title = ''
@@ -29,11 +29,13 @@ module Rubyplot
       if @backend == :default || @backend == :GR
         require(__dir__.to_s << '/scripting_backends/gr/gr_backend')
       end
-      @active_subplot = nil
+      @active_subplot = @subplots_list[0]
+      @no_subplot = true
     end
 
     def clear!
-      @subplots_list = []
+      @subplots_list = [Rubyplot::SubPlot.new(1, 1, 1)]
+      @no_subplot = true
       @tasks = []
       @x_title = ''
       @y_title = ''
@@ -49,10 +51,14 @@ module Rubyplot
       @bounding_box = true
       @x_axis_padding = :default
       @y_axis_padding = :default
-      @active_subplot = nil
+      @active_subplot = @subplots_list[0]
     end
 
     def subplot!(num_rows, num_columns, index)
+      if @no_subplot
+        @no_subplot = false
+        @subplots_list = []
+      end
       subplot_id = [num_rows, num_columns, index]
       subplots_list_index = @subplots_list.map{ |x| x.identity }.index subplot_id
       if subplots_list_index.nil? == false
@@ -63,6 +69,9 @@ module Rubyplot
       end
     end
 
+    def title(title_string)
+      @active_subplot.title = title_string
+    end
   end
 end
 =begin
