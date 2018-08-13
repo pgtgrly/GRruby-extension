@@ -66,7 +66,7 @@ static VALUE inqscale(VALUE,VALUE);
 static VALUE textext(VALUE,VALUE,VALUE,VALUE);
 static VALUE inqtextext(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE axes(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
-static VALUE axeslbl(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+//static VALUE axeslbl(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE grid(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE grid3d(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE verrorbars(VALUE,VALUE,VALUE,VALUE,VALUE);
@@ -99,16 +99,16 @@ static VALUE drawrect(VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE fillrect(VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE drawarc(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE fillarc(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
-static VALUE drawpath(VALUE,VALUE,VALUE,VALUE,VALUE);
+//static VALUE drawpath(VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE setarrowstyle(VALUE,VALUE);
 static VALUE setarrowsize(VALUE,VALUE);
 static VALUE drawarrow(VALUE,VALUE,VALUE,VALUE,VALUE);
-static VALUE readimage(VALUE,VALUE,VALUE,VALUE,VALUE);
+//static VALUE readimage(VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE drawimage(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE importgraphics(VALUE,VALUE);
 static VALUE setshadow(VALUE,VALUE,VALUE,VALUE);
 static VALUE settransparency(VALUE,VALUE);
-static VALUE setcoordxform(VALUE,VALUE);
+//static VALUE setcoordxform(VALUE,VALUE);
 static VALUE begingraphics(VALUE,VALUE);
 static VALUE endgraphics(VALUE);
 static VALUE getgraphics(VALUE);
@@ -128,11 +128,12 @@ static VALUE restorestate(VALUE);
 static VALUE selectcontext(VALUE,VALUE);
 static VALUE destroycontext(VALUE,VALUE);
 static VALUE uselinespec(VALUE,VALUE);
-static VALUE delaunay(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
-static VALUE reducepoints(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+//static VALUE delaunay(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+//static VALUE reducepoints(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE trisurface(VALUE,VALUE,VALUE,VALUE);
 static VALUE gradient(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE quiver(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
+/*
 static VALUE interp2(VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE meta_args_t(VALUE,VALUE);
 static VALUE meta_args_delete(VALUE,VALUE);
@@ -145,6 +146,7 @@ static VALUE sendmeta(VALUE,VALUE,VALUE,VALUE);
 static VALUE sendmeta_buf(VALUE,VALUE,VALUE,VALUE,VALUE);
 static VALUE sendmeta_args(VALUE,VALUE,VALUE);
 static VALUE closemeta(VALUE,VALUE);
+*/
 static VALUE version(VALUE);
 
 void Init_grruby(){
@@ -164,7 +166,7 @@ void Init_grruby(){
   rb_define_singleton_method(mGRruby,"polymarker",polymarker,2);
   rb_define_singleton_method(mGRruby,"text",text,3);
   rb_define_singleton_method(mGRruby,"inqtext",inqtext,5);
-  rb_define_singleton_method(mGRruby,"fillarea",fillarea,2);  
+  rb_define_singleton_method(mGRruby,"fillarea",fillarea,2);
   rb_define_singleton_method(mGRruby,"cellarray",cellarray,11);
   rb_define_singleton_method(mGRruby,"gdp",gdp,6);
   rb_define_singleton_method(mGRruby,"spline",spline,5);
@@ -282,7 +284,7 @@ void Init_grruby(){
   rb_define_singleton_method(mGRruby,"gradient",gradient,7);
   rb_define_singleton_method(mGRruby,"quiver",quiver,7);
   /*
-  //rb_define_singleton_method(mGRruby,"interp2",interp2,12);
+  rb_define_singleton_method(mGRruby,"interp2",interp2,12);
   rb_define_singleton_method(mGRruby,"meta_args_t",meta_args_t,1);
   rb_define_singleton_method(mGRruby,"meta_args_delete",meta_args_delete,1);
   rb_define_singleton_method(mGRruby,"meta_args_push_arg",meta_args_push_arg,3);
@@ -295,7 +297,7 @@ void Init_grruby(){
   rb_define_singleton_method(mGRruby,"sendmeta_args",sendmeta_args,2);
   rb_define_singleton_method(mGRruby,"closemeta",closemeta,1);
 */
-  rb_define_singleton_method(mGRruby,"version",version,0);  
+  rb_define_singleton_method(mGRruby,"version",version,0);
 }
 
 

@@ -1,5 +1,6 @@
 module Rubyplot
   module Color
+    # A list of contrasting colors that is used in Bartype BasePlots by default
     CONTRASTING_COLORS =
       [
         '#e6194b',
@@ -24,6 +25,8 @@ module Rubyplot
         '#808080'
       ].freeze
 
+    # A list of color symbols inspired by xkcd survey
+    # https://xkcd.com/color/rgb/
     COLOR_INDEX = {
       cloudy_blue: '#acc2d9',
       dark_pastel_green: '#56ae57',

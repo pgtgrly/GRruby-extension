@@ -1,4 +1,8 @@
 module Rubyplot
+  # Contains the state of the subplot and also handles it plotting
+  # The objects of this class is instantited by the Figure objects when
+  # the user calls #subplot! on the Figure object.
+  # @todo Delegate plotting to Subplotspace
   class SubPlot
     include Rubyplot::GRWrapper::Tasks
     include Rubyplot::Color
@@ -7,6 +11,11 @@ module Rubyplot
                   :bounding_box, :x_axis_padding, :y_axis_padding, :origin,
                   :title_shift, :tasks
     attr_reader :identity
+
+    # Constructor for subplot object
+    # @param num_rows [Fixnum] Number of Rows for the SubPlot matrix
+    # @param num_columns [Fixnum] Number of Rows for the SubPlot matrix
+    # @param index [Fixnum] Index of the active subplot in matrix (Row major)
     def initialize(num_rows, num_columns, index)
       @identity = [num_rows, num_columns, index]
       @tasks = []
@@ -26,6 +35,7 @@ module Rubyplot
       @y_axis_padding = :default
     end
 
+    # clears the state of the subplot
     def clear!
       @tasks = []
       @x_title = ''
@@ -43,6 +53,8 @@ module Rubyplot
       @x_axis_padding = :default
       @y_axis_padding = :default
     end
+
+    # plots the subplot based on the state and tasklist
     def call
       r = (@identity[2].to_f / @identity[1].to_f).ceil
       c = (@identity[2] % @identity[1]).zero? ? @identity[1] : @identity[2] % @identity[1]
@@ -54,13 +66,9 @@ module Rubyplot
       @x_axis_padding = Math.log((@x_range[1] - @x_range[0]), 10).round
       @y_axis_padding =  Math.log((@y_range[1] - @y_range[0]), 10).round
 
-      if @origin[0] == :default
-        @origin[0] = @x_range[0] - @x_axis_padding
-      end
+      @origin[0] = @x_range[0] - @x_axis_padding if @origin[0] == :default
+      @origin[1] = @y_range[0] - @y_axis_padding if @origin[1] == :default
 
-      if @origin[1] == :default
-        @origin[1] = @y_range[0] - @y_axis_padding
-      end
       SetViewPort.new(@xmin, @xmax, @ymin, @ymax).call
       SetWindow.new(@x_range[0] - @x_axis_padding, @x_range[1] + @x_axis_padding,
                     @y_range[0] - @y_axis_padding, @y_range[1] + @y_axis_padding).call

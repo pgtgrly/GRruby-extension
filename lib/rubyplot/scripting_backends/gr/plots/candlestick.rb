@@ -2,8 +2,6 @@ module Rubyplot
   module Scripting
     module Plots
       class Candlestick < BasePlots::RobustBase
-            # To do  declare constants for marker types and colours
-            # Allow list of types and colours to be passed
         def initialize(open_, high, low, close_, bar_gap, bar_width,
                        up_color: :default, down_color: :default,
                        up_line_color: :default, down_line_color: :default)

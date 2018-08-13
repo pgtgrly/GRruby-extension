@@ -5,7 +5,6 @@ module Rubyplot
         def initialize(data, bar_colors: :default, bar_width: :default,
                        bar_gap: :default, bar_edge: :default,
                        bar_edge_color: :default, bar_edge_width: :default)
-                       ## To Do add default Bar edge colors
           super()
           @bar_colors = bar_colors
           @bar_gap = bar_gap

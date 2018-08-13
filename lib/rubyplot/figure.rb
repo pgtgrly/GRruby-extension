@@ -1,4 +1,12 @@
 module Rubyplot
+  # Figure is the class that a user instantiates
+  # this is where all the plotting take place.
+  # An instance contains the state of the figure.
+  #
+  # Every plot in the figure is a subplot.
+  # It is Subplot(1,1,1) by default
+  #
+  # @author Pranav Garg
   class Figure
     include Rubyplot::Scripting::Plots
     include Rubyplot::GRWrapper::Tasks
@@ -8,6 +16,8 @@ module Rubyplot
                   :title_shift, :subplots_list
     attr_reader :tasks
 
+    # Constructor for the figure object
+    # @param backend [Symbol] Loads the desired backend, :GR by default
     def initialize(backend: :default)
       @backend = backend
       @subplots_list = [Rubyplot::SubPlot.new(1, 1, 1)]
@@ -33,7 +43,8 @@ module Rubyplot
       @no_subplot = true
     end
 
-    def clear!
+    # Clears the figure by resetting the state to the state to default
+    def clear_figure!
       @subplots_list = [Rubyplot::SubPlot.new(1, 1, 1)]
       @no_subplot = true
       @tasks = []
@@ -54,6 +65,17 @@ module Rubyplot
       @active_subplot = @subplots_list[0]
     end
 
+    # clears the active subplot
+    def clear!
+      @active_subplot.clear!
+    end
+
+    # Creates a new subplot in the figure (if not defined before)
+    # and loads it to to active_subplot and adds it to subplots_list.
+    # else loads existing subplot from subplots_list to active_subplot
+    # @param num_rows [Fixnum] Number of Rows for the SubPlot matrix
+    # @param num_columns [Fixnum] Number of Rows for the SubPlot matrix
+    # @param index [Fixnum] Index of the active subplot in matrix (Row major)
     def subplot!(num_rows, num_columns, index)
       if @no_subplot
         @no_subplot = false
@@ -69,12 +91,10 @@ module Rubyplot
       end
     end
 
+    # Adds title to the active subplot
+    # @param title [String] The title to be given to the active subplot
     def title(title_string)
       @active_subplot.title = title_string
     end
   end
 end
-=begin
-Known Bugs:
-# set yrange and xrange to nil, would require change in spec images and origin shift
-=end

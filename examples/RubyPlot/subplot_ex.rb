@@ -22,6 +22,11 @@ a.subplot!(2, 2, 3)
 a.line! @x1, @y1, line_color: :red, line_type: :dashed
 a.subplot!(2, 2, 4)
 a.candlestick! @open, @high, @low, @close, up_color: :blue, down_color: :black
+a.view
 a.subplot!(2, 2, 2)
+a.clear!
 a.scatter! @x2, @y2
+a.view
+a.clear_figure!
+a.line! @x1, @y1, line_color: :red, line_type: :dashed
 a.view

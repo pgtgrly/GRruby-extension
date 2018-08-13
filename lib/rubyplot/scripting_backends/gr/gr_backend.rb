@@ -1,8 +1,15 @@
 module Rubyplot
   class Figure
+    # Plots a scatterplot on the active subplot of the figure
+    # @param x_coordinates [Array] A list of x coordinates of points to be plotted
+    # @param y_coordinates [Array] A list of y coordinates of points to be plotted
+    # @param marker_size [Float] The size of markers
+    # @param marker_color [String or Symbol] Color of marker, can be a hex String
+    #  (#rrbbgg) or symbol from Rubyplot::Color
+    # @param marker_type [Symbol] A symbol for Marker type from
+    #  Rubyplot::GRWrapper::Tasks::GR_MARKER_SHAPES
     def scatter!(x_coordinates, y_coordinates, marker_size: :default,
                  marker_color: :default, marker_type: :default)
-                # give opions for colors as rgb
       @active_subplot.x_range[0] = x_coordinates.min if @active_subplot.x_range[0].nil?
       @active_subplot.x_range[1] = x_coordinates.max if @active_subplot.x_range[1].nil?
       @active_subplot.x_range[0] = x_coordinates.min if x_coordinates.min < @active_subplot.x_range[0]
@@ -18,7 +25,19 @@ module Rubyplot
                   marker_size: marker_size, marker_color: marker_color,
                   marker_type: marker_type))
     end
-
+    # Plots a linegraph on the active subplot of the figure
+    # @param x_coordinates [Array] A list of x coordinates of points to be plotted
+    # @param y_coordinates [Array] A list of y coordinates of points to be plotted
+    # @param line_width [Float] The width of line
+    # @param line_color [String or Symbol] Color of line, can be a hex String
+    #  (#rrbbgg) or symbol from Rubyplot::Color
+    # @param line_type [Symbol] A symbol for Line type from
+    #  Rubyplot::GRWrapper::Tasks::GR_LINE_TYPES
+    # @param marker_size [Float] The size of markers
+    # @param marker_color [String or Symbol] Color of marker, can be a hex String
+    #  (#rrbbgg) or symbol from Rubyplot::Color
+    # @param marker_type [Symbol] A symbol for Marker type from
+    #  Rubyplot::GRWrapper::Tasks::GR_MARKER_SHAPES
     def line!(x_coordinates, y_coordinates, line_width: :default,
               line_color: :default, line_type: :default,
               marker_size: :default, marker_color: :default,
@@ -40,6 +59,16 @@ module Rubyplot
                            marker_type: marker_type))
     end
 
+    # Plots a bar graph
+    # @param data [Float Array] Array containing values of bars
+    # @param bar_color [String or Symbol] Color of bars, can be a hex String
+    #  (#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_width [Float] Width of bar
+    # @param bar_gap [Float] Gap between consecutive bars
+    # @param bar_edge [Boolean] Argument to draw edge for bar (True by default)
+    # @param bar_edge_color [String or Symbol] Color of bar's edge, can be a hex
+    #  string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_edge_width [Float] Width of bar edge
     def bar!(data, bar_color: :default, bar_width: :default,
                    bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
                    bar_edge_width: :default)
@@ -62,6 +91,17 @@ module Rubyplot
                                 bar_edge_width: bar_edge_width))
     end
 
+    # Plots a stacked bar graph  in Z axis
+    # @param data [Float Array] Array of Arrays containing values of bars
+    # @param bar_color [Array of Strings or Array of Symbols] Array containing
+    #  color of bars corresponding to eash list in data, an element can be a hex
+    #  string(#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_width [Float] Width of bar
+    # @param bar_gap [Float] Gap between consecutive bars
+    # @param bar_edge [Boolean] Argument to draw edge for bar (True by default)
+    # @param bar_edge_color [String or Symbol] Color of bar's edge, can be a hex
+    #  string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_edge_width [Float] Width of bar edge
     def stacked_bar_z!(data, bar_colors: :default, bar_width: :default,
                    bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
                    bar_edge_width: :default)
@@ -85,6 +125,17 @@ module Rubyplot
                                 bar_edge_width: bar_edge_width))
     end
 
+    # Plots a regular bar graph  in Z axis
+    # @param data [Float Array] Array of Arrays containing values of bars
+    # @param bar_color [Array of Strings or Array of Symbols] Array containing
+    #  color of bars corresponding to eash list in data, an element can be a hex
+    #  string(#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_width [Float] Width of bar
+    # @param bar_gap [Float] Gap between consecutive bars
+    # @param bar_edge [Boolean] Argument to draw edge for bar (True by default)
+    # @param bar_edge_color [String or Symbol] Color of bar's edge, can be a hex
+    #  string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_edge_width [Float] Width of bar edge
     def stacked_bar!(data, bar_colors: :default, bar_width: :default,
                    bar_gap: :default, bar_edge: :default, bar_edge_color: :default,
                    bar_edge_width: :default)
@@ -106,6 +157,22 @@ module Rubyplot
                                 bar_edge_width: bar_edge_width))
     end
 
+    # Plots a candlestick graph
+    # @param open_ [Float Array] Array containing the opening values of a period
+    # @param high [Float Array] Array containing the highest value of a period
+    # @param low [Float Array] Array containing the lowest value of a period
+    # @param close_ [Float Array] Array containing the closing values of a period
+    # @param up_color [String or Symbol] Color of candle when close > open, can
+    #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param down_color [String or Symbol] Color of candle when close < open, can
+    #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param bar_width [Float] Width of candle
+    # @param bar_gap [Float] Gap between consecutive candles
+    # @param up_line_color [String or Symbol] Color of line when close > open, can
+    #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
+    # @param down_line_color [String or Symbol] Color of line when close < open, can
+    #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
+    
     def candlestick!(open_, high, low, close_, up_color: :default,
                       down_color: :default, bar_width: :default,
                       bar_gap: :default, up_line_color: :default,
@@ -123,10 +190,13 @@ module Rubyplot
                                   down_line_color: down_line_color))
     end
 
+    # To view the Figure
     def view
       Rubyplot::Plotspace.new(self).view!
     end
 
+    # To save the figure, currently only as .BMP files
+    # @param file_name [String] name of the file where the figure needs to be saved
     def save(file_name)
       Rubyplot::Plotspace.new(self).save!(file_name)
     end

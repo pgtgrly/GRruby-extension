@@ -2,8 +2,6 @@ module Rubyplot
   module Scripting
     module Plots
       class Line < BasePlots::RobustBase
-            # To do  declare constants for marker types and colours
-            # Allow list of types and colours to be passed
         def initialize(x_coordinates, y_coordinates, line_width: :default,
                        line_color: :default, line_type: :default,
                        marker_size: :default, marker_color: :default,
