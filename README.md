@@ -1,9 +1,15 @@
 # GRruby-extension
 
-An extension for the GR library using the same interface as rubyplot.
+An extension for the GR library using the same interface as Rubyplot.
 
 # Installation
-First we need to install the backend (GR Framework) the easiest way to install GR framework is to simply select your system configuration [here](https://software.opensuse.org/download.html?project=science:gr-framework&package=python-gr) and following the process mentioned.
+Firstly, make sure that you have ruby-dev
+
+```bash
+sudo apt install ruby-dev
+```
+
+Now, we need to install the backend (GR Framework) the easiest way to install GR framework is to simply select your system configuration [here](https://software.opensuse.org/download.html?project=science:gr-framework&package=python-gr) and following the process mentioned.
 But instead of installing python-gr replace it with just gr. [for example: sudo apt-get install python-gr (in case of Ubuntu) ]
 (unless you also want GR Framework for Python)
 
@@ -17,7 +23,7 @@ Now we install my version of Rubyplot by:
 ```bash
 git clone https://github.com/pgtgrly/GRruby-extension
 cd GRruby-extension
-gem install rspec ZenTest rspec-autotest hoe rmagick rake-compiler
+sudo gem install rspec ZenTest rspec-autotest hoe rmagick rake-compiler
 rake compile
 ```
 
