@@ -20,7 +20,7 @@ describe Rubyplot::Figure do
     end
     it 'creates a line and scatter graph' do
       a = Rubyplot::Figure.new
-      a.title = 'My cool graph'
+      a.title 'My cool graph'
       a.line! @x1, @y1
       a.scatter! @x2, @y2
       a.save 'spec/reference_images/file_name.bmp'

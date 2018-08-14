@@ -143,53 +143,12 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar Z graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar! @bars_data,bar_colors: [:black, :red, :green, :blue]
+      a.stacked_bar_z! @bars_data,bar_colors: [:black, :red, :green, :blue]
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
                                      'user_color_stacked_bar_z_graph.bmp',
                                      10)).to eq(true)
-    end
-  end
-
-  context '#line_plot!' do
-    it 'creates a simple line plot' do
-      a = Rubyplot::Figure.new
-      a.line_plot_z! @freqwise
-      a.save 'spec/reference_images/file_name.bmp'
-
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'line_plot.bmp', 10)).to eq(true)
-    end
-
-    it 'creates a line plot with red markers' do
-      a = Rubyplot::Figure.new
-      a.line_plot! @values, marker_color: :red, marker_size: 2
-      a.save 'spec/reference_images/file_name.bmp'
-
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'red_line_plot.bmp', 10)).to eq(true)
-    end
-
-    it 'creates a line plot with green solid bowtie markers' do
-      a = Rubyplot::Figure.new
-      a.line_plot! @values, marker_color: :green, marker_type: :solid_bowtie
-      a.save 'spec/reference_images/file_name.bmp'
-
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'green _bowtie_line_plot.bmp',
-                                     10)).to eq(true)
-    end
-  end
-
-  context '#pie!' do
-    it 'creates a simple pie chart' do
-      a = Rubyplot::Figure.new
-      a.pie! @portfolio, @portfolio_names
-      a.save 'spec/reference_images/file_name.bmp'
-
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'pie_chart.bmp', 10)).to eq(true)
     end
   end
 
@@ -217,7 +176,7 @@ describe Rubyplot::Figure do
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'candlestick_plot.bmp',
+                                     'candlestick_diff_color_plot.bmp',
                                      10)).to eq(true)
     end
   end

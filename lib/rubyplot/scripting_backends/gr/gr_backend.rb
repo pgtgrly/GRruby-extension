@@ -172,7 +172,7 @@ module Rubyplot
     #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
     # @param down_line_color [String or Symbol] Color of line when close < open, can
     #  be a hex string (#rrbbgg) or symbol from Rubyplot::Color
-    
+
     def candlestick!(open_, high, low, close_, up_color: :default,
                       down_color: :default, bar_width: :default,
                       bar_gap: :default, up_line_color: :default,
@@ -196,6 +196,8 @@ module Rubyplot
     end
 
     # To save the figure, currently only as .BMP files
+    # known bug : save is not gvivng same output as view,in some cases
+    #  this is an internal error in  GR Framework
     # @param file_name [String] name of the file where the figure needs to be saved
     def save(file_name)
       Rubyplot::Plotspace.new(self).save!(file_name)

@@ -11,7 +11,7 @@ module Rubyplot
         subplot.call
       end
       UpdateWorkspace.new.call
-      puts("\nPress any button to continue")
+      puts("\nPress Enter to continue")
       gets
       ClearWorkspace.new.call
     end
