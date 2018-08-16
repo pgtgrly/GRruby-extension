@@ -970,9 +970,9 @@ module Rubyplot
   end
 end
 
-require_relative 'grruby/grruby'
-require_relative 'grruby/tasks/gr_function_classes'
-require_relative 'rubyplot/scripting_backends/gr/plots'
-require_relative 'rubyplot/figure'
-require_relative 'rubyplot/scripting_backends/gr/plotspace'
-require_relative 'rubyplot/scripting_backends/gr/subplot'
+require 'grruby/grruby'
+require 'grruby/tasks/gr_function_classes'
+require 'rubyplot/scripting_backends/gr/plots'
+require 'rubyplot/figure'
+require 'rubyplot/scripting_backends/gr/plotspace'
+require 'rubyplot/scripting_backends/gr/subplot'
