@@ -1,6 +1,6 @@
 require_relative '../../lib/grruby'
 g = Rubyplot::Figure.new()
-g.title = 'This is a Fancy Graph'
+g.title ('This is a Fancy Graph')
 @x1 = [1, 2, 3, 4, 5]
 @y1 = [10, 29, 30, 40, 50]
 @x2 = [2, 16, 4]
