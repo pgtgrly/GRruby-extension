@@ -26,5 +26,5 @@ spec_script
 *grruby.time
 *.bundle
 *.o
-*.gemspec
  ext/grruby/Makefile
+ *Makefile
