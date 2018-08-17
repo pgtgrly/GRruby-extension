@@ -12,6 +12,10 @@ before_install:
   - mv grruby.so ../../lib/grruby/grruby.so
   - cd ..
   - cd ..
+  - cd examples/Rubyplot
+  - ruby BarPlotNoTitle.rb
+  - ls
+  - cd ../..
   - export GKSwstype=100
 language: ruby
 rvm:
