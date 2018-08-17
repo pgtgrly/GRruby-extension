@@ -10,6 +10,7 @@ describe Rubyplot::Figure do
     @portfolio = [20_000, 8000, 34_000]
   end
   after do
+    File.delete 'spec/reference_images/file_name.bmp'
   end
 
   context '#line' do
@@ -17,6 +18,9 @@ describe Rubyplot::Figure do
       a = Rubyplot::Figure.new
       a.line! @x1, @y1
       a.save 'spec/reference_images/file_name.bmp'
+
+      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
+                                     'line_graph.bmp', 10)).to eq(true)
     end
 
     it 'creates a line graph with points marked' do
