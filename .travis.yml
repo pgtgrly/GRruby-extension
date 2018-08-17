@@ -10,7 +10,9 @@ before_install:
   - ruby extconf.rb
   - make
   - make install
-  - cd ./../..
+  - cd ..
+  - cd ..
+  - ls
 language: ruby
 rvm:
 - 2.2
