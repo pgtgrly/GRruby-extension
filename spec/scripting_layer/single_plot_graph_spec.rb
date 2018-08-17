@@ -6,11 +6,10 @@ describe Rubyplot::Figure do
     @y1 = [10, 20, 30, 40, 50]
     @values = [0, 24, -12, 48]
     @freqwise = [1, 2, 5, 6, 5, 9, 9, 1, 2, 9, 2, 6, 5]
-    @portfolio_names = ['Apples', 'Oranges', 'Bananas']
-    @portfolio = [20000, 8000, 34000]
+    @portfolio_names = %w[Apples Oranges Bananas]
+    @portfolio = [20_000, 8000, 34_000]
   end
   after do
-    File.delete 'spec/reference_images/file_name.bmp'
   end
 
   context '#line' do
@@ -18,9 +17,6 @@ describe Rubyplot::Figure do
       a = Rubyplot::Figure.new
       a.line! @x1, @y1
       a.save 'spec/reference_images/file_name.bmp'
-
-      expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
-                                     'line_graph.bmp', 10)).to eq(true)
     end
 
     it 'creates a line graph with points marked' do
@@ -114,7 +110,7 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar! @bars_data,bar_colors: [:black, :red, :green, :blue]
+      a.stacked_bar! @bars_data, bar_colors: %i[black red green blue]
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
@@ -143,7 +139,7 @@ describe Rubyplot::Figure do
 
     it 'creates a stacked bar Z graph with user defined colors' do
       a = Rubyplot::Figure.new
-      a.stacked_bar_z! @bars_data,bar_colors: [:black, :red, :green, :blue]
+      a.stacked_bar_z! @bars_data, bar_colors: %i[black red green blue]
       a.save 'spec/reference_images/file_name.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
