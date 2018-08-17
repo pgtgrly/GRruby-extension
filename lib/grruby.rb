@@ -969,7 +969,6 @@ module Rubyplot
     }.freeze
   end
 end
-
 require_relative 'grruby/grruby'
 require_relative 'grruby/tasks/gr_function_classes'
 require_relative 'rubyplot/scripting_backends/gr/plots'
