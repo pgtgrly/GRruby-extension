@@ -9,16 +9,10 @@ before_install:
   - ruby extconf.rb
   - make
   - make install
+  - mv grruby.so ../../lib/grruby/grruby.so
   - cd ..
   - cd ..
-  - cd examples/RubyPlot
-  - ls
-  - ruby BarPlotNoTitle.rb
-  - ls
-  - rm bar_notitle.bmp
-  - cd ../..
   - export GKSwstype=100
-  - ls
 language: ruby
 rvm:
 - 2.3
