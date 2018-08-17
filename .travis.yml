@@ -1,9 +1,15 @@
 before_install:
-  - sudo apt install ruby-dev
+  - sudo apt install ruby-dev gcc make
   - sudo sh -c "echo 'deb http://download.opensuse.org/repositories/science:/gr-framework/xUbuntu_14.04/ /' > /etc/apt/sources.list.d/science:gr-framework.list"
   - sudo apt-get update
   - sudo apt-get install gr --allow-unauthenticated
   - sudo ln -s /usr/gr /usr/local/gr
+  - cd /ext/grruby
+  - ruby extconf.rb
+  - make
+  - make install
+
+
 language: ruby
 rvm:
-  - 2.2
+- 2.2
