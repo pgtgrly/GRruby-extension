@@ -12,8 +12,7 @@ before_install:
   - mv grruby.so ../../lib/grruby/grruby.so
   - cd ..
   - cd ..
-  - ls
-  - cd examples/Rubyplot
+  - cd examples/RubyPlot
   - ruby BarPlotNoTitle.rb
   - ls
   - cd ../..
