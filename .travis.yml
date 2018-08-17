@@ -12,8 +12,14 @@ before_install:
   - make install
   - cd ..
   - cd ..
+  - cd examples/RubyPlot
+  - ls
+  - ruby BarPlotNoTitle.rb
+  - ls
+  - rm bar_notitle.bmp
+  - cd ../..
   - export GKSwstype=100
   - ls
 language: ruby
 rvm:
-- 2.2
+- 2.3
