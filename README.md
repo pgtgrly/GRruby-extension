@@ -22,10 +22,15 @@ Now we install my version of Rubyplot by:
 
 ```bash
 git clone https://github.com/pgtgrly/GRruby-extension
-cd GRruby-extension
+cd GRruby-extension/ext/grruby
+ruby extconf.rb
+make
+make install
 sudo gem install rspec ZenTest rspec-autotest hoe rmagick rake-compiler
-rake compile
+bundle exec rake install
 ```
+
+You can run tests using  ``` bundle exec rake spec ```
 
 You can generate documents using
 
