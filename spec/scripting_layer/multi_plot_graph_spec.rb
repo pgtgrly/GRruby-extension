@@ -26,8 +26,10 @@ describe Rubyplot::Figure do
       a.save 'spec/reference_images/file_name.bmp'
       a.save 'spec/reference_images/multi_plot_graph/line_scatter_graph.bmp'
 
+      puts 'Test comment'
       expect(compare_with_reference?('file_name.bmp', 'multi_plot_graph/' \
-                                     'line_scatter_graph.bmp', 10)).to eq(true)
+                                     'line_scatter_graph.bmp', 300)).to eq(true)
+      puts 'done'
     end
   end
 end

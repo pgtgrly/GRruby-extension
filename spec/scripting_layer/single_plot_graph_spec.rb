@@ -18,6 +18,7 @@ describe Rubyplot::Figure do
       a = Rubyplot::Figure.new
       a.line! @x1, @y1
       a.save 'spec/reference_images/file_name.bmp'
+      a.save 'spec/reference_images/single_plot_graph/line_graph.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'single_plot_graph/' \
                                      'line_graph.bmp', 10)).to eq(true)
