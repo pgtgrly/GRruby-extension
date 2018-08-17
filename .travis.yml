@@ -12,6 +12,7 @@ before_install:
   - make install
   - cd ..
   - cd ..
+  - export GKSwstype=100
   - ls
 language: ruby
 rvm:
