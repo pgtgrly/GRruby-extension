@@ -24,6 +24,7 @@ describe Rubyplot::Figure do
       a.line! @x1, @y1
       a.scatter! @x2, @y2
       a.save 'spec/reference_images/file_name.bmp'
+      a.save 'spec/reference_images/multi_plot_graph/line_scatter_graph.bmp'
 
       expect(compare_with_reference?('file_name.bmp', 'multi_plot_graph/' \
                                      'line_scatter_graph.bmp', 10)).to eq(true)
