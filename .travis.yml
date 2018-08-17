@@ -4,11 +4,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install gr --allow-unauthenticated
   - sudo ln -s /usr/gr /usr/local/gr
-  - cd /ext/grruby
-  - ruby extconf.rb
-  - make
-  - make install
-
 
 language: ruby
 rvm:
