@@ -2,6 +2,10 @@ require './lib/grruby'
 require 'rmagick'
 include Magick
 
+def spec_path(path)
+  File.expand_path("../spec", __FILE__)
+end
+
 def compare_with_reference?(test_image, reference_image, tolerance)
   compute_rms(test_image, reference_image) < tolerance
 end
