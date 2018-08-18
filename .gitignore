@@ -5,26 +5,3 @@
 tmp/
 doc/
 .yardoc/
-*~
-*.gem
-*.rbc
-.bundle
-.config
-.yardoc
-.DS_Store
-Gemfile.lock
-doc
-pkg
-test.rb
-test.png
-gtk_test
-spec_script
-*.DS_Store
-!spec/*.DS_Store
-*.gem
-*test*png
-*grruby.time
-*.bundle
-*.o
- ext/grruby/Makefile
- *Makefile
