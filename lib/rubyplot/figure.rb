@@ -92,7 +92,7 @@ module Rubyplot
     end
 
     # Adds title to the active subplot
-    # @param title [String] The title to be given to the active subplot
+    # @param title_string [String] The title to be given to the active subplot
     def title(title_string)
       @active_subplot.title = title_string
     end
