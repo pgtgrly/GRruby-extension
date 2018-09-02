@@ -196,7 +196,7 @@ module Rubyplot
     end
 
     # To save the figure, currently only as .BMP files
-    # known bug : save is not gvivng same output as view,in some cases
+    # known bug : save is not giving same output as view,in some cases
     #  this is an internal error in  GR Framework
     # @param file_name [String] name of the file where the figure needs to be saved
     def save(file_name)
