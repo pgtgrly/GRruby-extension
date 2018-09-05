@@ -8,10 +8,6 @@ bars_data = [[12, 4, 53, 24],
               [4, 34, 8, 25],
               [20, 9, 31, 2],
               [56, 12, 84, 30]]
-open = [10, 15, 24, 18]
-high = [20, 25, 30, 18]
-low = [5, 13, 15, 3]
-close = [15, 24, 18, 4]
 a = Rubyplot::Figure.new
 a.subplot!(2, 2, 1)
 a.line! x1, y1, marker_size: 1
