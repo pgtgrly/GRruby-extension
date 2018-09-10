@@ -93,7 +93,7 @@ module Rubyplot
 
     # Plots a stacked bar graph  in Z axis
     # @param data [Float Array] Array of Arrays containing values of bars
-    # @param bar_color [Array of Strings or Array of Symbols] Array containing
+    # @param bar_colors [Array of Strings or Array of Symbols] Array containing
     #  color of bars corresponding to eash list in data, an element can be a hex
     #  string(#rrbbgg) or symbol from Rubyplot::Color
     # @param bar_width [Float] Width of bar
@@ -127,7 +127,7 @@ module Rubyplot
 
     # Plots a regular bar graph  in Z axis
     # @param data [Float Array] Array of Arrays containing values of bars
-    # @param bar_color [Array of Strings or Array of Symbols] Array containing
+    # @param bar_colors [Array of Strings or Array of Symbols] Array containing
     #  color of bars corresponding to eash list in data, an element can be a hex
     #  string(#rrbbgg) or symbol from Rubyplot::Color
     # @param bar_width [Float] Width of bar
@@ -196,7 +196,7 @@ module Rubyplot
     end
 
     # To save the figure, currently only as .BMP files
-    # known bug : save is not gvivng same output as view,in some cases
+    # known bug : save is not giving same output as view,in some cases
     #  this is an internal error in  GR Framework
     # @param file_name [String] name of the file where the figure needs to be saved
     def save(file_name)

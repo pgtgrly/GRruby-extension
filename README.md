@@ -10,7 +10,7 @@ sudo apt install ruby-dev
 ```
 
 Now, we need to install the backend (GR Framework) the easiest way to install GR framework is to simply select your system configuration [here](https://software.opensuse.org/download.html?project=science:gr-framework&package=python-gr) and following the process mentioned.
-But instead of installing python-gr replace it with just gr. [for example: sudo apt-get install python-gr (in case of Ubuntu) ]
+But instead of installing python-gr replace it with just gr. [for example: sudo apt-get install gr (in case of Ubuntu) ]
 (unless you also want GR Framework for Python)
 
 This will install GR Framework in /usr . So we will create a symbolic link for the same by:
